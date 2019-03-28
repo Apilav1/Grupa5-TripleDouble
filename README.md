@@ -3,6 +3,7 @@
 [![Logo](https://i.ibb.co/GRjSNrs/startneki30small.png)](https://www.youtube.com/watch?v=A-6k3QNtCnU)
 
 ## Tema: BestDeal
+[![Sliba](https://thumbs.gfycat.com/BasicLoneAntelope-size_restricted.gif)]
 #### Članovi tima
 1.  Adi Pilav
 2. Mirza Šehalić
@@ -17,7 +18,46 @@ Baziramo se na decentraliziranom pristupu prodaji, pri čemu smo mi posrednik iz
 Mi ne vjerujemo da su svi kupci isti, zbog čega se trudimo da svakome priuštimo unikatno zadovoljstvo kupovine, izaberite BestDeal i uvjerite se u naš kvalitet!
 
 ### Procesi
+#### Pretraživanje artikala po raznim parametrima koristeći metrike
+ Korisnicima su na raspolaganju razni tipovi pretraga:
+- pretraga po tipu 
+- pretraga po specifikacijama
+- filtriranje po cijeni artikla
+- filtriranje po ocjeni artikla
+- filtriranje po očekivanom vremenu isporuke
+- filtriranje po dostupnosti u skladištu dobavljača
 
+#### Praćenje artikala
+- dodavanje u listu želja
+- informacije o promjeni cijene (newsletter)
+- informacije o (ne)dostupnosti artikala na praćenju
+
+#### Prikaz podataka o prodavcu/dobavljaču artikla
+Korisnicima se kroz ugodno okruženje prikazuju osnovne informacije o kompaniji koja će im isporučiti artikal. Neke od njih su:
+- informacije o dobavljaču
+- ocjene dobavljača
+- dostupnost artikala po skladištima dobavljača
+- komentari korisnika koji su surađivali sa istim
+
+#### Prikaz preporučenih artikala
+Aplikacija koristi *cookies* kako bi korisnicima ponudila artikle koje su oni sami najviše pretraživali, u cilju potpunog korisničkog iskustva. Na taj način možemo profilirati korisnike po njihovim stvarnim potrebama.
+
+#### Formiranje liste najpopularnijih artikala na naslovnoj stranici
+Koristeći napredne algoritme predikcije potražnje formiramo listu "najpopularnijih artikala" ili jednostavno artikala koji su *izdvojeni* od ostalih. To ne moraju biti zaista oni artikli koji se najbolje prodaju, aplikacija može korisniku ponuditi i artikle koji se prodaju jako slabo, u cilju bolje prodaje i primjene marketing mehanizama.
+#### Dostava i plaćanje
+Korisnicima se nude mnogobrojne opcije dostave i plaćanja: 
+##### Dostava:
+- BH Pošta
+- A2B, EuroExpress i slični domaći kurirski servisi
+- DHL, UPS i slični strani kurirski servisi
+##### Plaćanje:
+- žiralno
+- pouzećem
+- bankovnim karticama (Visa, Mastercard, Diners, American Express)
+- PayPal, Skrill i sličnim servisima.
+
+
+Prilikom finaliziranja narudžbe korisnik bira između nekoliko dobavljača koji dostavljaju na navedenu adresu, o čemu odlučuje menadžment same kompanije.
 ### Funkcionalnosti
 **Korisnik**:
 - Mogućnost kupovine artikala preko web prodavnice
@@ -37,5 +77,6 @@ Mi ne vjerujemo da su svi kupci isti, zbog čega se trudimo da svakome priuštim
 
 
 ### Akteri
-- **Korisnik**: Kupuje artikle, ima mogućnosti korištenja pogodnosti redovnih kupaca, uređivanja profila, ocjenjivanja artikala i sl.
+- **Neregistrovani korisnik**: Može samo pregledati artikle, mora izvršiti registraciju ukoliko želi obaviti kupovinu.
+- **Registrovani korisnik**: Kupuje artikle, ima mogućnosti korištenja pogodnosti redovnih kupaca, uređivanja profila, ocjenjivanja artikala i sl.
 - **Administrator sistema:** Nadgleda sistem, vodi računa da sve u okviru sistema funkcioniše ispravno, ima uvid u statistike korištenja.
