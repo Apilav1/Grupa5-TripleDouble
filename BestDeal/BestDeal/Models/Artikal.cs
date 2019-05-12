@@ -11,6 +11,7 @@ namespace BestDeal.Models
     {
         private Tip tipArtikla;
         double cijenaArtikla;
+        //TODO: Mozda lista recenzija umjesto specificne ocjene artikla, ljepse izgleda
         double ocjenaArtikla;
 
         public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla, double ocjenaArtikla)
@@ -21,6 +22,7 @@ namespace BestDeal.Models
             this.ocjenaArtikla = ocjenaArtikla;
         }
 
+        //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala
         public Image SlikaArtikla { get; }
 
         public Tip TipArtikla { get => tipArtikla;
