@@ -40,7 +40,6 @@ namespace BestDeal.Models
     //klasa koja omogucava dodavanje tipova
     public class Tip
     {
-        //TODO:Moguce opcije nekog IDa ili liste specificnih polja koju ima svaki tip (radi razlicitih detalja kod recenzija i sl.)
         public Tip(string ime)
         {
             Ime = ime;
