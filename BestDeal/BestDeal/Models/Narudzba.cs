@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace BestDeal.Models
 {
-    interface Narudzba
+    class Narudzba
     {
+        //TODO: Dodati sve atribute jedne narudzbe (vecinski instance postojecih klasa), pored toga treba uvezati sa dostavom i placanjem
     }
 }

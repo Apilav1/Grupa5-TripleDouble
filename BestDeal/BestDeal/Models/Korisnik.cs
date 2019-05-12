@@ -16,7 +16,7 @@ namespace BestDeal.Models
         string prezime;
         string korisnickoIme;
         string password;
-
+        //TODO: Ovo vjerovatno mora naslijediti IdentityUser kad se rijesi problem No authentication
         public Korisnik(string ime, string prezime, string korisnickoIme, string password)
         {
             idKorisnika = generatorID++;
