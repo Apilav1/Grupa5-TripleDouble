@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace BestDeal.Models
 {
+    //TODO: Skontati koji context ide, identitymodel, No authorization problem
+    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    public class ApplicationUser : IdentityUser
+    {
+    }
+    //IdentityDbContext<ApplicationUser> ???
     public class BestDealContext : DbContext
     {
+
         //automatske migracije
         private static readonly bool[] _migrated = { false };
 
@@ -26,7 +34,7 @@ namespace BestDeal.Models
         //TODO: Dodati preostale klase kad se završi model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Korisnik>().ToTable("Korisnik");
+            modelBuilder.Entity<Korisnik>().ToTable("korisnici");
             //TODO: Dodati preostale klase kad se završi model
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

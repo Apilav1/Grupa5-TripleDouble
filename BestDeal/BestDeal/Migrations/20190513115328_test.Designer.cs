@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    [Migration("20190511171958_prvaMigracija")]
-    partial class prvaMigracija
+    [Migration("20190513115328_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,7 @@ namespace BestDeal.Migrations
 
                     b.HasKey("KorisnickoIme");
 
-                    b.ToTable("Korisnik");
+                    b.ToTable("korisnici");
                 });
 #pragma warning restore 612, 618
         }

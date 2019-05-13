@@ -2,12 +2,12 @@
 
 namespace BestDeal.Migrations
 {
-    public partial class prvaMigracija : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Korisnik",
+                name: "korisnici",
                 columns: table => new
                 {
                     KorisnickoIme = table.Column<string>(nullable: false),
@@ -17,14 +17,14 @@ namespace BestDeal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Korisnik", x => x.KorisnickoIme);
+                    table.PrimaryKey("PK_korisnici", x => x.KorisnickoIme);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Korisnik");
+                name: "korisnici");
         }
     }
 }

@@ -31,7 +31,7 @@ namespace BestDeal.Migrations
 
                     b.HasKey("KorisnickoIme");
 
-                    b.ToTable("Korisnik");
+                    b.ToTable("korisnici");
                 });
 #pragma warning restore 612, 618
         }
