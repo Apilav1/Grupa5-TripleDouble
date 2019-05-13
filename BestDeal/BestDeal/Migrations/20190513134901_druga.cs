@@ -2,7 +2,7 @@
 
 namespace BestDeal.Migrations
 {
-    public partial class test : Migration
+    public partial class druga : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,8 +23,7 @@ namespace BestDeal.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "korisnici");
+
         }
     }
 }

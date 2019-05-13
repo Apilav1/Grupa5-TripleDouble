@@ -6,7 +6,7 @@ namespace BestDeal
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        /*public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.CreateScope())
             {
@@ -18,7 +18,7 @@ namespace BestDeal
                 // Seed the database.
                 InitializeUserAndRoles(context);
             }
-        }
+        }*/
 
         private static void InitializeUserAndRoles(Models.BestDealContext context)
         {

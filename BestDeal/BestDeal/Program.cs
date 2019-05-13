@@ -18,10 +18,10 @@ namespace BestDeal
     {
         public static void Main(string[] args)
         {
-            Models.Korisnik hamo = new Models.Korisnik("Lol", "ba", "test", "hajti");
+            //Models.Korisnik hamo = new Models.Korisnik("Lol", "ba", "test", "hajti");
             var host = CreateWebHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope())
+            /*using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
@@ -36,7 +36,7 @@ namespace BestDeal
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");
                 }
-            }
+            }*/
 
             host.Run();
         }

@@ -22,13 +22,13 @@ namespace BestDeal.Models
 
         public BestDealContext(DbContextOptions<BestDealContext> options) : base(options)
         {
-            if (!_migrated[0])
+          /*  if (!_migrated[0])
                 lock (_migrated)
                     if (!_migrated[0])
                     {
                         Database.Migrate(); // apply all migrations
                         _migrated[0] = true;
-                    }
+                    }*/
         }
         public DbSet<Korisnik> Korisnik { get; set; }
         //TODO: Dodati preostale klase kad se završi model
