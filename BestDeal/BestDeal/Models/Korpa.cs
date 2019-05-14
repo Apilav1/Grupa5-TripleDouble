@@ -9,13 +9,27 @@ namespace BestDeal.Models
     //TODO: Integracija ocjena i svega
     public class Korpa
     {
-        List<Tuple<Artikal, Recenzija, double>> podaciOArtiklima;
+        //List<Tuple<Artikal, Recenzija, double>> podaciOArtiklima;
+        List<Tuple<Artikal, int>> artikliKolicina;
 
-        public Korpa(List<Tuple<Artikal, Recenzija, double>> podaciOArtiklima)
+        public Korpa(List<Tuple<Artikal, int>> artikliKolicina)
         {
-            PodaciOArtiklima = podaciOArtiklima;
+            this.artikliKolicina = artikliKolicina;
         }
 
-        public List<Tuple<Artikal, Recenzija, double>> PodaciOArtiklima { get => podaciOArtiklima; set => podaciOArtiklima = value; }
+
+        //public List<Tuple<Artikal, Recenzija, double>> PodaciOArtiklima { get => podaciOArtiklima; set => podaciOArtiklima = value; }
+        public Artikal this[int index]
+        {
+            get
+            {
+                return artikliKolicina[index].Item1;
+            }
+        }
+
+        public void DodajArtikla(Artikal artikal, int kolicina)
+        {
+            artikliKolicina.Add(new Tuple<Artikal, int>(artikal, kolicina));
+        }
     }
 }

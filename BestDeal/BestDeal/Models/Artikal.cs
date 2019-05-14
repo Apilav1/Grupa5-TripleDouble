@@ -13,13 +13,14 @@ namespace BestDeal.Models
         double cijenaArtikla;
         //TODO: Mozda lista recenzija umjesto specificne ocjene artikla, ljepse izgleda
         double ocjenaArtikla;
+        private List<Recenzija> recenzije;
 
-        public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla, double ocjenaArtikla)
+        public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla)//, double ocjenaArtikla)
         {
             this.SlikaArtikla = slikaArtikla;
             this.tipArtikla = tipArtikla;
             this.cijenaArtikla = cijenaArtikla;
-            this.ocjenaArtikla = ocjenaArtikla;
+            //this.ocjenaArtikla = ocjenaArtikla;
         }
 
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala
@@ -40,6 +41,25 @@ namespace BestDeal.Models
             }
         }
         public double CijenaArtikla { get => cijenaArtikla; set => cijenaArtikla = value; }
-        public double OcjenaArtikla { get => ocjenaArtikla; set => ocjenaArtikla = value; }
+        public double OcjenaArtikla { get => ocjenaArtikla; } //set => ocjenaArtikla = value; }
+
+        public void DodajRecenziju(string tekstRecenzije, double ocjenaArtikla, List<double> specificneOcjene)
+        {
+            recenzije.Add(new Recenzija(tekstRecenzije, specificneOcjene));
+     
+            IzracunajOcjenu();
+        }
+
+        void IzracunajOcjenu()
+        {
+            double suma = 0.0;
+
+            foreach(Recenzija recenzija in recenzije)
+            {
+                suma += recenzija.OverallRating;
+            }
+
+            ocjenaArtikla = suma / recenzije.Count;
+        }
     }
 }

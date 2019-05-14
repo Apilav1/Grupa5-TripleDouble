@@ -5,30 +5,56 @@ using System.Threading.Tasks;
 
 namespace BestDeal.Models
 {
+
     public class Recenzija
     {
         string tekstRecenzije;
-        double ocjenaArtikla;
+        //double ocjenaArtikla;
         //TODO: specificne ocjene sada iskljucivo ovise o tipu artikla, potrebno je negdje definirati sta su one za koji tip
-        List<Tuple<int, double>> specificneOcjene;
-
-        public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)
+        //List<Tuple<int, double>> specificneOcjene;
+        public double BatteryLifeRating { get; }
+        public double DesignRating { get; }
+        public double PerformanseRating { get; }
+        public double OverallRating { get; }
+        
+        public List<double> specificneOcjene;
+        // public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)
+        public Recenzija(string tekstRecenzije, List<double> specificneOcjene)
         {
             this.tekstRecenzije = tekstRecenzije;
-            this.ocjenaArtikla = ocjenaArtikla;
+            //this.ocjenaArtikla = ocjenaArtikla;
+            //this.specificneOcjene = specificneOcjene;
+
             this.specificneOcjene = specificneOcjene;
+            BatteryLifeRating = specificneOcjene[0];
+            DesignRating = specificneOcjene[1];
+            PerformanseRating = specificneOcjene[2];
+            OverallRating = dajProsjekPojedinacnihRecenzija();
         }
         //Nemamo property jer ne zelimo dozvoliti promjene
-        double dajProsjekPojedinacnihRecenzija(Recenzija r)
+        double dajProsjekPojedinacnihRecenzija()
         {
             double suma = 0.0;
-            for (int i = 0; i < specificneOcjene.Count; i++)
-                suma += specificneOcjene[i].Item2;
-            return suma / specificneOcjene.Count;
+            /* for (int i = 0; i < specificneOcjene.Count; i++)
+                 suma += specificneOcjene[i].Item2;
+
+             ocjene.OverallRating = suma / specificneOcjene.Count;
+
+             return suma / specificneOcjene.Count;*/
+
+            foreach(double d in specificneOcjene)
+                suma += d;
+
+            return suma/specificneOcjene.Count;
         }
-        bool daLiJePozitivnaRecenzija(Recenzija r)
+        bool daLiJePozitivnaRecenzija()
         {
-            return (ocjenaArtikla >= 8 && dajProsjekPojedinacnihRecenzija(r)>=8);
+            return (OverallRating >= 8 && dajProsjekPojedinacnihRecenzija()>=8);
+        }
+
+        double getOverallRating()
+        {
+            return OverallRating;
         }
     }
 }
