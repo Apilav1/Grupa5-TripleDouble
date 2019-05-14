@@ -22,7 +22,7 @@ namespace BestDeal.Models
             Tip Generalni = new Tip("Generalno");
             listaTipova.Add(Generalni);
         }
-        public static Tipovi getInstance()
+        public static Tipovi getInstance() 
         {
             if (instancaTipovi == null)
             {
