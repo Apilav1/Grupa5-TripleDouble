@@ -1,0 +1,9 @@
+Ispoštovan je Single responsibility princip jer nijedna klasa ne ovisi o višestrukim formatima i različitim mogućnostima implementacije.
+Ispoštovan je Open-Closed princip jer se u svim klasama mogu dinamično dodavati novi atrubiti i funkcionalnosti, bez potrebe za bilo kakvim izmjenama koda. Također nije moguće direktno utjecati na atribute klasa.
+Ispoštovan je Liskov princip zamjene jer sve izvedene klase možemo koristiti u pozivima funkcija i manipulacijama nad objektima (i obrnuto).
+Ispoštovan je princip razdvajanja interfejsa, u klasi postoji više interfejsa za različite namjene što je olakšalo implementaciju samog projekta.
+Ispoštovan je princip inverzije ovisnosti kroz interfejse i abstraktne klase, gdje se ne ovisi od detalja već od apstrakcije.
+
+Izabrani su Singleton i Decorator kao odgovarajući patterni (iz grupe kreacijskih i strukturnih). 
+Za implementaciju Singleton patterna je poslužila funkcionalnost tipova artikala, gdje je izuzetno bitno imati samo jednu instancu koja sadrži sve tipove, a da se pritom tipovi ne mogu mijenjati osim u internom konstruktoru, čime izbjegavamo višestruko instanciranje pri svakom dodavanju artikla.
+Za implementaciju Decorator patterna je poslužila aktivnost obavještavanja klijenata na različite načine i  preko raznih servisa, pri čemu možemo koristiti i više načina u isto vrijeme, a ne gomilamo programski kod, koristeći kompoziciju umjesto apstrakcije.
