@@ -12,23 +12,29 @@ namespace BestDeal.Models
         //double ocjenaArtikla;
         //TODO: specificne ocjene sada iskljucivo ovise o tipu artikla, potrebno je negdje definirati sta su one za koji tip
         //List<Tuple<int, double>> specificneOcjene;
-        public double BatteryLifeRating { get; }
-        public double DesignRating { get; }
-        public double PerformanseRating { get; }
-        public double OverallRating { get; }
+        double batteryLifeRating;
+        double designRating;
+        double performanceRating;
+        double overallRating;
+
         
         public List<double> specificneOcjene;
+
+        public double BatteryLifeRating { get => batteryLifeRating; set => batteryLifeRating = value; }
+        public double DesignRating { get => designRating; set => designRating = value; }
+        public double PerformanceRating { get => performanceRating; set => performanceRating = value; }
+        public double OverallRating { get => overallRating; set => overallRating = value; }
+
         // public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)
         public Recenzija(string tekstRecenzije, List<double> specificneOcjene)
         {
             this.tekstRecenzije = tekstRecenzije;
             //this.ocjenaArtikla = ocjenaArtikla;
             //this.specificneOcjene = specificneOcjene;
-
             this.specificneOcjene = specificneOcjene;
             BatteryLifeRating = specificneOcjene[0];
             DesignRating = specificneOcjene[1];
-            PerformanseRating = specificneOcjene[2];
+            PerformanceRating = specificneOcjene[2];
             OverallRating = dajProsjekPojedinacnihRecenzija();
         }
         //Nemamo property jer ne zelimo dozvoliti promjene

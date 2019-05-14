@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 namespace BestDeal.Models
 {
     //Konkretni decorator pattern
-    public class MailObavijest:Obavijest
+    public class ChatObavijest:Obavijest
     {
         //ne znam treba li ovaj konstruktor bas, ali neka ga da je jednostavnije
-        public MailObavijest(string tekstObavijesti) : base(tekstObavijesti)
+        public ChatObavijest(string tekstObavijesti) : base(tekstObavijesti)
         {
         }
 
