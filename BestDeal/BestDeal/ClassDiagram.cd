@@ -1,2 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BestDeal.Models.Artikal" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAACACAAAAAAAAAAgAAAACAAAAAAAAIAAAQAAAAAAA=</HashCode>
+      <FileName>Models\Artikal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.ApplicationUser" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BestDealContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.BestDealContext" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAEAAAAAARAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BestDealContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.Korisnik" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgEQACIBEAAhAAAAAAAAgAAAAAACAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Korisnik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.Korpa" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\Korpa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.MailObavijest" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\MailObavijest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.Narudzba" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Narudzba.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.Obavijest" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
+      <FileName>Models\Obavijest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BestDeal.Models.Recenzija" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAACAAAAAAAAAAAAAAgAAAAAAAEAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Recenzija.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.SlackObavijest" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\SlackObavijest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.Tipovi" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAQAEAAAAAAAAAAAAAAAQAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Tipovi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BestDeal.Models.Tip" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Models\Tipovi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BestDeal.Models.IObavijest" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\IObavijest.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BestDeal.Models.IPlacanje" Collapsed="true">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\IPlacanje.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BestDeal.Models.IPretraga" Collapsed="true">
+    <Position X="13.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAACAAAAAAAAABAAAAAAgABAEAA=</HashCode>
+      <FileName>Models\IPretraga.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
