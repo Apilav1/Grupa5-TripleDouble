@@ -35,8 +35,8 @@
       <FileName>Models\Korpa.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BestDeal.Models.MailObavijest" Collapsed="true">
-    <Position X="5" Y="1.75" Width="1.5" />
+  <Class Name="BestDeal.Models.MailObavijest">
+    <Position X="4" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\MailObavijest.cs</FileName>
@@ -49,7 +49,7 @@
       <FileName>Models\Narudzba.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BestDeal.Models.Obavijest" Collapsed="true">
+  <Class Name="BestDeal.Models.Obavijest">
     <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
@@ -64,8 +64,8 @@
       <FileName>Models\Recenzija.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BestDeal.Models.SlackObavijest" Collapsed="true">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+  <Class Name="BestDeal.Models.SlackObavijest">
+    <Position X="7.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\SlackObavijest.cs</FileName>

@@ -16,6 +16,7 @@ namespace BestDeal.Models
         string prezime;
         string korisnickoIme;
         string password;
+        bool registrovan;
         //TODO: Ovo vjerovatno mora naslijediti IdentityUser kad se rijesi problem No authentication
         public Korisnik(string ime, string prezime, string korisnickoIme, string password)
         {
@@ -32,6 +33,7 @@ namespace BestDeal.Models
         [Key]
         public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
         public string Password { get => password; set => password = value; }
+        public bool Registrovan { get => registrovan; set => registrovan = value; }
 
         //za enkripciju moramo osigurati da sifra nikad nije vidljiva niti spasena u plain text, koristimo najbolju opciju: SHA-512 algoritam
         protected string dajSHA512(string password)

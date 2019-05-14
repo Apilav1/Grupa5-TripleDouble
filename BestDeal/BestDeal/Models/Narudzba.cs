@@ -5,8 +5,17 @@ using System.Threading.Tasks;
 
 namespace BestDeal.Models
 {
-    class Narudzba
+    public class Narudzba:IPlacanje
     {
         //TODO: Dodati sve atribute jedne narudzbe (vecinski instance postojecih klasa), pored toga treba uvezati sa dostavom i placanjem
+        public void placanjeKarticom()
+        {
+
+        }
+
+        public void placanjePouzecem()
+        {
+
+        }
     }
 }
