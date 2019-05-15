@@ -29,6 +29,8 @@ namespace BestDeal.Migrations
 
                     b.Property<string>("Prezime");
 
+                    b.Property<bool>("Registrovan");
+
                     b.HasKey("KorisnickoIme");
 
                     b.ToTable("korisnici");

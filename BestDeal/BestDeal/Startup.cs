@@ -30,7 +30,8 @@ namespace BestDeal
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<Models.BestDealContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
+            services.AddDbContext<Models.BestDealContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

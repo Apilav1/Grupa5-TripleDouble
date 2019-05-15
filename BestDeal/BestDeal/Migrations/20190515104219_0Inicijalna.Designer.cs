@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    [Migration("20190513134901_druga")]
-    partial class druga
+    [Migration("20190515104219_0Inicijalna")]
+    partial class _0Inicijalna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,8 @@ namespace BestDeal.Migrations
                     b.Property<string>("Password");
 
                     b.Property<string>("Prezime");
+
+                    b.Property<bool>("Registrovan");
 
                     b.HasKey("KorisnickoIme");
 

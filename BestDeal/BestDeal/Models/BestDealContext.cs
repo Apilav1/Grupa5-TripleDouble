@@ -39,10 +39,13 @@ namespace BestDeal.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseSqlServer(
-                    @"Server=(localdb)\mssqllocaldb;Database=EFMiscellanous.ConnectionResiliency;Trusted_Connection=True;ConnectRetryCount=0",
-                    options => options.EnableRetryOnFailure());
+
+            //idim sada, ne bih nikad primijetio :)
+            //zato ja imam 15 godina iskustva raznog ;)
+            //optionsBuilder
+            //    .UseSqlServer(
+            //        @"Server=(localdb)\mssqllocaldb;Database=EFMiscellanous.ConnectionResiliency;Trusted_Connection=True;ConnectRetryCount=0",
+            //        options => options.EnableRetryOnFailure());
         }
     }
 }
