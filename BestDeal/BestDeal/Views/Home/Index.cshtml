@@ -1,7 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Početna stranica";
 }
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="text-center">
+            <b>
+                <font size="15">
+                    <script>
 
-<div class="text-center">
-    <h1 class="display-4">Đeste momčine</h1>
-</div>
+                        var text = "Vozdra raja"
+                        var speed = 200
+
+
+
+                        if (document.all || document.getElementById) {
+                            document.write('<span id="highlight">' + text + '</span>')
+                            var storetext = document.getElementById ? document.getElementById("highlight") : document.all.highlight
+                        }
+                        else
+                            document.write(text)
+                        var hex = new Array("00", "14", "28", "3C", "50", "64", "78", "8C", "A0", "B4", "C8", "DC", "F0")
+                        var r, g, b;
+                        function changetext() {
+                            r = Math.floor((Math.random() * 12) + 1)
+                            g = Math.floor((Math.random() * 12) + 1)
+                            b = Math.floor((Math.random() * 12) + 1)
+                            rainbow = "#" + hex[r] + hex[g] + hex[b]
+                            storetext.style.color = rainbow
+                        }
+                        function starteffect() {
+                            if (document.all || document.getElementById)
+                                flash = setInterval("changetext()", speed)
+                        }
+                        starteffect()
+                    </script>
+                    </font>
+            </b>
+        </div>
+        <div id="okta-login-container"></div>
+        ...
+    </body>
+
+        <!-- Latest CDN production Javascript and CSS: 2.16.0 -->
+        <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/js/okta-sign-in.min.js"
+                type="text/javascript"></script>
+        <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-sign-in.min.css"
+              type="text/css"
+              rel="stylesheet" />
+
+        <!-- Theme file: Customize or replace this file if you want to override our default styles -->
+        <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-theme.css"
+              type="text/css"
+              rel="stylesheet" />
+        <div id="widget-container"></div>
+
+      
