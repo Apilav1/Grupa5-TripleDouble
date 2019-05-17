@@ -10,6 +10,7 @@ namespace BestDeal.Models
 {
     public class Korisnik
     {
+        [ScaffoldColumn(false)]
         static int generatorID = 1000;
         int idKorisnika;
         string ime;
@@ -17,6 +18,13 @@ namespace BestDeal.Models
         string korisnickoIme;
         string password;
         bool registrovan;
+
+        public Korisnik()
+        {
+            idKorisnika = generatorID++;
+            Registrovan = true;
+        }
+
         //TODO: Ovo vjerovatno mora naslijediti IdentityUser kad se rijesi problem No authentication
         public Korisnik(string ime, string prezime, string korisnickoIme, string password)
         {
@@ -27,12 +35,17 @@ namespace BestDeal.Models
             this.Password = dajSHA512(password);
         }
         //ne smijemo dozvoliti setovanje IDa koji se automatski generira
-        public int IdKorisnika { get => idKorisnika; }
+        public int IdKorisnika { get => idKorisnika;}
+        [Required]
         public string Ime { get => ime; set => ime = value; }
+        [Required]
         public string Prezime { get => prezime; set => prezime = value; }
+        [Required]
         [Key]
         public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
-        public string Password { get => password; set => password = value; }
+        [Required]
+        public string Password { get => password; set => password = dajSHA512(value); }
+        [ScaffoldColumn(false)]
         public bool Registrovan { get => registrovan; set => registrovan = value; }
 
         //za enkripciju moramo osigurati da sifra nikad nije vidljiva niti spasena u plain text, koristimo najbolju opciju: SHA-512 algoritam

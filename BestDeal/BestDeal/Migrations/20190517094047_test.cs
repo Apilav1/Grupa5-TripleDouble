@@ -2,7 +2,7 @@
 
 namespace BestDeal.Migrations
 {
-    public partial class _0Inicijalna : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,9 +11,9 @@ namespace BestDeal.Migrations
                 columns: table => new
                 {
                     KorisnickoIme = table.Column<string>(nullable: false),
-                    Ime = table.Column<string>(nullable: true),
-                    Prezime = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
+                    Ime = table.Column<string>(nullable: false),
+                    Prezime = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
                     Registrovan = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
