@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BestDeal.Models
 {
@@ -13,6 +14,7 @@ namespace BestDeal.Models
         {
             Ime = ime;
         }
+        [Required]
         public string Ime { get; private set; }
         public override bool Equals(object obj)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Drawing.Imaging;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations;
 
 namespace BestDeal.Models
 {
@@ -13,6 +14,8 @@ namespace BestDeal.Models
         double cijenaArtikla;
         //TODO: Mozda lista recenzija umjesto specificne ocjene artikla, ljepse izgleda
         double ocjenaArtikla;
+        int idArtikla;
+        [ScaffoldColumn(false)]
         private List<Recenzija> recenzije;
 
         public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla, double ocjenaArtikla=default)//, double ocjenaArtikla)
@@ -25,7 +28,7 @@ namespace BestDeal.Models
 
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala
         public Image SlikaArtikla { get; }
-
+        [Required]
         public Tip TipArtikla { get => tipArtikla;
             set
             {
@@ -40,8 +43,13 @@ namespace BestDeal.Models
                     }
             }
         }
+        [Required]
         public double CijenaArtikla { get => cijenaArtikla; set => cijenaArtikla = value; }
+        [ScaffoldColumn(false)]
         public double OcjenaArtikla { get => ocjenaArtikla; } //set => ocjenaArtikla = value; }
+        [Key]
+        public int IdArtikla { get => idArtikla; set => idArtikla = value; }
+
 
         public void DodajRecenziju(string tekstRecenzije, double ocjenaArtikla, List<double> specificneOcjene)
         {

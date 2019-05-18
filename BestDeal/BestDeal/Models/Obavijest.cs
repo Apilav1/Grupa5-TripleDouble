@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BestDeal.Models
 {
@@ -15,7 +16,7 @@ namespace BestDeal.Models
         {
             this.tekstObavijesti = tekstObavijesti;
         }
-
+        [Required]
         public string TekstObavijesti { get => tekstObavijesti; set => tekstObavijesti = value; }
 
         public void posaljiObavijest(string obavijest)
