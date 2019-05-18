@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BestDeal.Models
 {
 
     public class Recenzija
     {
+        [Required]
         string tekstRecenzije;
         //double ocjenaArtikla;
         //TODO: specificne ocjene sada iskljucivo ovise o tipu artikla, potrebno je negdje definirati sta su one za koji tip
@@ -19,10 +21,13 @@ namespace BestDeal.Models
 
         
         public List<double> specificneOcjene;
-
+        [Required]
         public double BatteryLifeRating { get => batteryLifeRating; set => batteryLifeRating = value; }
+        [Required]
         public double DesignRating { get => designRating; set => designRating = value; }
+        [Required]
         public double PerformanceRating { get => performanceRating; set => performanceRating = value; }
+        [Required]
         public double OverallRating { get => overallRating; set => overallRating = value; }
 
         // public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)

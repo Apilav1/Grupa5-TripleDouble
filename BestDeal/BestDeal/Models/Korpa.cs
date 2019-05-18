@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace BestDeal.Models
 {
@@ -10,6 +11,7 @@ namespace BestDeal.Models
     public class Korpa
     {
         //List<Tuple<Artikal, Recenzija, double>> podaciOArtiklima;
+        [Required]
         List<Tuple<Artikal, int>> artikliKolicina;
 
         public Korpa(List<Tuple<Artikal, int>> artikliKolicina)
