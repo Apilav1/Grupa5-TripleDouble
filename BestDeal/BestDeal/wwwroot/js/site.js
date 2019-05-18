@@ -30,11 +30,12 @@ signInWidgetConfig = {
     },
     baseUrl: 'https://bestdealservis.azurewebsites.net',
     clientId: "0oalsbpd0ey8PIgFj356",
-    redirectUri: 'https://bestdealservis.azurewebsites.net/implicit/callback',
+    redirectUri: 'https://bestdealservis.azurewebsites.net/korisniks',
     authParams: {
         issuer: 'https://dev-239472.okta.com/oauth2/auslsbvpdFVkH5cEE356',
-        responseType: ['id_token', 'token'],
-        scopes: ['openid', 'email', 'profile'],
+        responseType: ['token', 'id_token'],
+        grantType: ['implicit', 'authorizationCode'],
+        scopes: ['openid'],
     },
 
 };
@@ -48,7 +49,7 @@ if (signInWidget.token.hasTokensInUrl()) {
             var idToken = res[1]
 
             // Say hello to the person who just signed in:
-            console.log('Hello, ' + idToken.claims.email);
+            //console.log('Hello, ' + idToken.claims.email);
 
             // Save the tokens for later use, e.g. if the page gets refreshed:
             signInWidget.tokenManager.add('accessToken', accessToken);
@@ -136,25 +137,4 @@ function callMessagesApi() {
             document.body.firstChild
         );
     }
-    var config = {
-        
-        customButtons: [
-            {
-                title: 'Click Me 1',
-                className: 'btn-customAuth',
-                click: function () {
-                    // clicking on the button navigates to another page
-                    window.location.href = 'http://www.example1.com';
-                }
-            },
-            {
-                title: 'Click Me 2',
-                className: 'btn-customAuth',
-                click: function () {
-                    // clicking on the button navigates to another page
-                    window.location.href = 'http://www.example2.com';
-                }
-            }
-        ],
-};
 }

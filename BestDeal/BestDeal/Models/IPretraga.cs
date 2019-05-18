@@ -10,8 +10,8 @@ namespace BestDeal.Models
     {
          List <Artikal> pretragaPoTipu(Tip t);
         List<Artikal> pretragaPoSpecifikaciji();
-        List<Artikal> pretragaPoCijeni(double cijena);
-        List<Artikal> pretragapoOcjeni(double ocjena);
+        List<Artikal> pretragaPoCijeni(double pocetnaCijena, double krajnjaCijena);
+        List<Artikal> pretragapoOcjeni(double minimalnaOcjena);
         List<Artikal> pretragaPoVremenuIsporuke(DateTime isporuka);
         List<Artikal> pretragaPoDostupnosti(bool dostupno);
     }
