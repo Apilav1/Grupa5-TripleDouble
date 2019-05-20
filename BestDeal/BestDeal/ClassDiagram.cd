@@ -3,51 +3,45 @@
   <Class Name="BestDeal.Models.Artikal" Collapsed="true">
     <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAACACAAAAAAAAAAgAAAACAAAAAAAAIAAAQAAAAAAA=</HashCode>
+      <HashCode>AoAACACAACAAAAAAAgAAAACAAAAAAAQIAAAUAgAAAAA=</HashCode>
       <FileName>Models\Artikal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BestDeal.Models.ApplicationUser" Collapsed="true">
     <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAEUACABEAAjAAAAAgAAgAAAAAACAAAAAgAAAAA=</HashCode>
       <FileName>Models\BestDealContext.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BestDeal.Models.BestDealContext" Collapsed="true">
     <Position X="13.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAEAAAAAARAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAQAAAAAAAAEAAAAAAQAAAAAAAAAAA=</HashCode>
       <FileName>Models\BestDealContext.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BestDeal.Models.Korisnik" Collapsed="true">
-    <Position X="9.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAgEQACIBEAAhAAAAAAAAgAAAAAACAAAAAgAAAAA=</HashCode>
-      <FileName>Models\Korisnik.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BestDeal.Models.Korpa" Collapsed="true">
     <Position X="11.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Models\Korpa.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BestDeal.Models.MailObavijest">
+  <Class Name="BestDeal.Models.ChatObavijest">
     <Position X="4" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
-      <FileName>Models\MailObavijest.cs</FileName>
+      <FileName>Models\ChatObavijest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BestDeal.Models.Narudzba" Collapsed="true">
     <Position X="13.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgAAAAAEAAAAAIAAAAAAAAAAwAIAKAACAQAIAAIA=</HashCode>
       <FileName>Models\Narudzba.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="BestDeal.Models.Obavijest">
     <Position X="6.25" Y="0.5" Width="1.5" />
@@ -60,15 +54,15 @@
   <Class Name="BestDeal.Models.Recenzija" Collapsed="true">
     <Position X="9.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAACAAAAAAAAAAAAAAgAAAAAAAEAAIAAAAAAAAAAA=</HashCode>
+      <HashCode>IAgAACAAEAAAAFAAAABAgAAEQAAgEAAAAAAAEAAAAAA=</HashCode>
       <FileName>Models\Recenzija.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BestDeal.Models.SlackObavijest">
+  <Class Name="BestDeal.Models.NarudzbeObavijest">
     <Position X="7.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
-      <FileName>Models\SlackObavijest.cs</FileName>
+      <FileName>Models\NarudzbeObavijest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BestDeal.Models.Tipovi" Collapsed="true">
@@ -82,7 +76,7 @@
     <Position X="11.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
-      <FileName>Models\Tipovi.cs</FileName>
+      <FileName>Models\Tip.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="BestDeal.Models.IObavijest" Collapsed="true">

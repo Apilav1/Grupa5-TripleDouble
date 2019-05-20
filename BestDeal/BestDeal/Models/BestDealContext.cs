@@ -10,11 +10,9 @@ namespace BestDeal.Models
 {
     //TODO: Skontati koji context ide, identitymodel, No authorization problem
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
-    {
-    }
+
     //IdentityDbContext<ApplicationUser> ???
-    public class BestDealContext : DbContext
+    public class BestDealContext : IdentityDbContext<ApplicationUser>
     {
 
         //automatske migracije
@@ -30,22 +28,16 @@ namespace BestDeal.Models
                         _migrated[0] = true;
                     }*/
         }
-        public DbSet<Korisnik> Korisnik { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
         //TODO: Dodati preostale klase kad se završi model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Korisnik>().ToTable("korisnici");
+            modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUsers");
             //TODO: Dodati preostale klase kad se završi model
+            base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            //idim sada, ne bih nikad primijetio :)
-            //zato ja imam 15 godina iskustva raznog ;)
-            //optionsBuilder
-            //    .UseSqlServer(
-            //        @"Server=(localdb)\mssqllocaldb;Database=EFMiscellanous.ConnectionResiliency;Trusted_Connection=True;ConnectRetryCount=0",
-            //        options => options.EnableRetryOnFailure());
         }
     }
 }

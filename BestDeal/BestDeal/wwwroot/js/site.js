@@ -30,7 +30,7 @@ signInWidgetConfig = {
     },
     baseUrl: 'https://bestdealservis.azurewebsites.net',
     clientId: "0oalsbpd0ey8PIgFj356",
-    redirectUri: 'https://bestdealservis.azurewebsites.net/korisniks',
+    redirectUri: 'https://bestdealservis.azurewebsites.net/account/login',
     authParams: {
         issuer: 'https://dev-239472.okta.com/oauth2/auslsbvpdFVkH5cEE356',
         responseType: ['token', 'id_token'],

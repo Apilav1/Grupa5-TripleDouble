@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace BestDeal.Models
     public class Narudzba : IPlacanje
     {
         //TODO:  treba uvezati sa dostavom i placanjem
+        [Key]
+        int idNarudzbe;
         Korpa odabraniArtikli;
         DateTime datumVrijemeNarudzbe;
         StanjeNarudzbe stanje;

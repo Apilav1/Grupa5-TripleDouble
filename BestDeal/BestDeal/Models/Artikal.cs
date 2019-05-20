@@ -18,12 +18,12 @@ namespace BestDeal.Models
         [ScaffoldColumn(false)]
         private List<Recenzija> recenzije;
 
-        public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla, double ocjenaArtikla=default)//, double ocjenaArtikla)
+        public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla)//, double ocjenaArtikla)
         {
             this.SlikaArtikla = slikaArtikla;
             this.tipArtikla = tipArtikla;
             this.cijenaArtikla = cijenaArtikla;
-            this.ocjenaArtikla = ocjenaArtikla;
+           // this.ocjenaArtikla = ocjenaArtikla;
         }
 
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BestDeal.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,68 +28,39 @@ namespace BestDeal
         {
             Configuration = configuration;
         }
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddCors(options =>
+            services.AddDbContext<BestDealContext>(options =>
+       options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-                options.AddDefaultPolicy(
-                    builder =>
-                    {
-
-                        builder.AllowAnyOrigin();
-                    });
-
-            });
-                services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-            services.AddDbContext<Models.BestDealContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //okta
-            services.AddAuthentication(sharedOptions =>
-            {
-                sharedOptions.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                sharedOptions.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                options.User.RequireUniqueEmail = false;
             })
-            .AddCookie()
-            .AddOpenIdConnect(options =>
+     .AddEntityFrameworkStores<BestDealContext>()
+     .AddRoles<IdentityRole>()
+     .AddSignInManager<SignInManager<ApplicationUser>>();
+            //.AddDefaultTokenProviders(); //Ovo je za 2FA
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+     .AddRazorPagesOptions(options =>
+     {
+         options.AllowAreas = true;
+         options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+         options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+     });
+
+            services.ConfigureApplicationCookie(options =>
             {
-                // Configuration pulled from appsettings.json by default:
-                options.ClientId = Configuration["okta:ClientId"];
-                options.ClientSecret = Configuration["okta:ClientSecret"];
-                options.Authority = Configuration["okta:Issuer"];
-                options.Scope.Add("openid");
-                options.Scope.Add("profile");
-               options.TokenValidationParameters = new TokenValidationParameters
-               {
-                   NameClaimType = "name"
-               };
-           });
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
 
-           if (!string.IsNullOrEmpty(Configuration["okta:OrgUrl"]) && !string.IsNullOrEmpty(Configuration["okta:APIToken"]))
-           {
-               services.AddSingleton<IOktaClient>
-               (
-                   new OktaClient(new OktaClientConfiguration()
-                   {
-                       OktaDomain = Configuration["okta:OrgUrl"],
-                       Token = Configuration["okta:APIToken"]
-                   })
-               );
-           }
-
-            // ... the rest of ConfigureServices
-            services.AddMvc();
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
