@@ -9,7 +9,7 @@ namespace BestDeal.Models
     public class Narudzba : IPlacanje
     {
         //TODO:  treba uvezati sa dostavom i placanjem
-        [Key]
+       
         int idNarudzbe;
         Korpa odabraniArtikli;
         DateTime datumVrijemeNarudzbe;
@@ -18,11 +18,17 @@ namespace BestDeal.Models
         public Korpa OdabraniArtikli { get => odabraniArtikli; set => odabraniArtikli = value; }
         public DateTime DatumVrijemeNarudzbe { get => datumVrijemeNarudzbe; set => datumVrijemeNarudzbe = value; }
         internal StanjeNarudzbe Stanje { get => stanje; set => stanje = value; }
+        [Key]
+        public int IdNarudzbe { get => idNarudzbe; set => idNarudzbe = value; }
 
         public Narudzba(Korpa odabraniArtikli, DateTime datumVrijemeNarudzbe)
         {
             this.OdabraniArtikli = odabraniArtikli;
             this.DatumVrijemeNarudzbe = datumVrijemeNarudzbe;
+        }
+
+        public Narudzba()
+        {
         }
 
         public void placanjeKarticom()

@@ -10,6 +10,7 @@ namespace BestDeal.Models
     public class Recenzija
     {
         [Required]
+        int idRecenzije;
         string tekstRecenzije;
         //double ocjenaArtikla;
         //TODO: specificne ocjene sada iskljucivo ovise o tipu artikla, potrebno je negdje definirati sta su one za koji tip
@@ -29,6 +30,8 @@ namespace BestDeal.Models
         public double PerformanceRating { get => performanceRating; set => performanceRating = value; }
         [Required]
         public double OverallRating { get => overallRating; set => overallRating = value; }
+        [Key]
+        public int IdRecenzije { get => idRecenzije; set => idRecenzije = value; }
 
         // public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)
         public Recenzija(string tekstRecenzije, List<double> specificneOcjene)
@@ -42,6 +45,11 @@ namespace BestDeal.Models
             PerformanceRating = specificneOcjene[2];
             OverallRating = dajProsjekPojedinacnihRecenzija();
         }
+
+        public Recenzija()
+        {
+        }
+
         //Nemamo property jer ne zelimo dozvoliti promjene
         double dajProsjekPojedinacnihRecenzija()
         {

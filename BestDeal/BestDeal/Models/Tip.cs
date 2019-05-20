@@ -15,6 +15,7 @@ namespace BestDeal.Models
             Ime = ime;
         }
         [Required]
+        [Key]
         public string Ime { get; private set; }
         public override bool Equals(object obj)
         {

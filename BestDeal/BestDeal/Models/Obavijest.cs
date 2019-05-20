@@ -10,7 +10,9 @@ namespace BestDeal.Models
 
     public class Obavijest:IObavijest
     {
+
         string tekstObavijesti;
+        int idObavijesti;
 
         public Obavijest(string tekstObavijesti)
         {
@@ -18,6 +20,8 @@ namespace BestDeal.Models
         }
         [Required]
         public string TekstObavijesti { get => tekstObavijesti; set => tekstObavijesti = value; }
+        [Key]
+        public int IdObavijesti { get => idObavijesti; set => idObavijesti = value; }
 
         public void posaljiObavijest(string obavijest)
         {

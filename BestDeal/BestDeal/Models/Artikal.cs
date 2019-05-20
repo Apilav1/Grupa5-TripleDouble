@@ -26,6 +26,12 @@ namespace BestDeal.Models
            // this.ocjenaArtikla = ocjenaArtikla;
         }
 
+        public Artikal(double cijenaArtikla, int idArtikla)
+        {
+            CijenaArtikla = cijenaArtikla;
+            IdArtikla = idArtikla;
+        }
+
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala
         public Image SlikaArtikla { get; }
         [Required]

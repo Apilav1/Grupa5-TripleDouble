@@ -61,7 +61,7 @@ namespace BestDeal.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
         }
-
+        //TODO: Rijesiti cudnovati 502 koji se ne bi smio desavati u generiranom kodu
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");

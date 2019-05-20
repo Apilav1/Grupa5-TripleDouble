@@ -13,6 +13,10 @@ namespace BestDeal.Models
         //List<Tuple<Artikal, Recenzija, double>> podaciOArtiklima;
         [Required]
         List<Tuple<Artikal, int>> artikliKolicina;
+        int idKorpe;
+        public Korpa()
+        {
+        }
 
         public Korpa(List<Tuple<Artikal, int>> artikliKolicina)
         {
@@ -28,6 +32,8 @@ namespace BestDeal.Models
                 return artikliKolicina[index].Item1;
             }
         }
+        [Key]
+        public int IdKorpe { get => idKorpe; set => idKorpe = value; }
 
         public void DodajArtikla(Artikal artikal, int kolicina)
         {

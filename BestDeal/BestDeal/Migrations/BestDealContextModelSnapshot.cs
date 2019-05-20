@@ -73,6 +73,100 @@ namespace BestDeal.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("BestDeal.Models.Artikal", b =>
+                {
+                    b.Property<int>("IdArtikla")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("CijenaArtikla");
+
+                    b.Property<string>("TipArtiklaIme")
+                        .IsRequired();
+
+                    b.HasKey("IdArtikla");
+
+                    b.HasIndex("TipArtiklaIme");
+
+                    b.ToTable("Artikal");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Korpa", b =>
+                {
+                    b.Property<int>("IdKorpe")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("IdKorpe");
+
+                    b.ToTable("Korpa");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Narudzba", b =>
+                {
+                    b.Property<int>("IdNarudzbe")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatumVrijemeNarudzbe");
+
+                    b.Property<int?>("OdabraniArtikliIdKorpe");
+
+                    b.HasKey("IdNarudzbe");
+
+                    b.HasIndex("OdabraniArtikliIdKorpe");
+
+                    b.ToTable("Narudzba");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Obavijest", b =>
+                {
+                    b.Property<int>("IdObavijesti")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("TekstObavijesti")
+                        .IsRequired();
+
+                    b.HasKey("IdObavijesti");
+
+                    b.ToTable("Obavijest");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Obavijest");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Recenzija", b =>
+                {
+                    b.Property<int>("IdRecenzije")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("BatteryLifeRating");
+
+                    b.Property<double>("DesignRating");
+
+                    b.Property<double>("OverallRating");
+
+                    b.Property<double>("PerformanceRating");
+
+                    b.HasKey("IdRecenzije");
+
+                    b.ToTable("Recenzija");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Tip", b =>
+                {
+                    b.Property<string>("Ime")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Ime");
+
+                    b.ToTable("Tip");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -181,6 +275,39 @@ namespace BestDeal.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.ChatObavijest", b =>
+                {
+                    b.HasBaseType("BestDeal.Models.Obavijest");
+
+                    b.ToTable("ChatObavijest");
+
+                    b.HasDiscriminator().HasValue("ChatObavijest");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.NarudzbeObavijest", b =>
+                {
+                    b.HasBaseType("BestDeal.Models.Obavijest");
+
+                    b.ToTable("NarudzbeObavijest");
+
+                    b.HasDiscriminator().HasValue("NarudzbeObavijest");
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Artikal", b =>
+                {
+                    b.HasOne("BestDeal.Models.Tip", "TipArtikla")
+                        .WithMany()
+                        .HasForeignKey("TipArtiklaIme")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BestDeal.Models.Narudzba", b =>
+                {
+                    b.HasOne("BestDeal.Models.Korpa", "OdabraniArtikli")
+                        .WithMany()
+                        .HasForeignKey("OdabraniArtikliIdKorpe");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

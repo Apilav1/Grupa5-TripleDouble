@@ -1,29 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BestDeal.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using Okta.AspNetCore;
-using Okta.Sdk;
-using Okta.Sdk.Configuration;
-
 namespace BestDeal
 {
     public class Startup
     {
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            //initializing custom roles 
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            string[] roleNames = { "Admin", "Store-Manager", "Member" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                // ensure that the role does not exist
+                if (!roleExist)
+                {
+                    //create the roles and seed them to the database: 
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            // find the user with the admin email 
+            var _user = await UserManager.FindByEmailAsync("admin@email.com");
+
+            // check if the user exists
+            if (_user == null)
+            {
+                //Here you could create the super admin who will maintain the web app
+                var poweruser = new ApplicationUser
+                {
+                    UserName = "Admin",
+                    Email = "admin@email.com",
+                };
+                string adminPassword = "p@$$w0rd";
+
+                var createPowerUser = await UserManager.CreateAsync(poweruser, adminPassword);
+                if (createPowerUser.Succeeded)
+                {
+                    //here we tie the new user to the role
+                    await UserManager.AddToRoleAsync(poweruser, "Admin");
+
+                }
+            }
+        }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -64,9 +95,10 @@ namespace BestDeal
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
-          //  SeedData.Initialize(app.ApplicationServices);
+            //  SeedData.Initialize(app.ApplicationServices);
+            //AsyncContext.Run(async () => { await CreateRoles(serviceProvider); });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -88,6 +120,7 @@ namespace BestDeal
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //CreateRoles(serviceProvider).GetAwaiter().GetResult(); TODO: Ispitati gdje je ovdje problem
         }
     }
 }

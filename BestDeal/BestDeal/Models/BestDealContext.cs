@@ -29,11 +29,30 @@ namespace BestDeal.Models
                     }*/
         }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
-        //TODO: Dodati preostale klase kad se završi model
+        public DbSet<Korpa> Korpa { get; set; }
+        public DbSet<Narudzba> Narudzba { get; set; }
+        public DbSet<Obavijest> Obavijest { get; set; }
+        public DbSet<ChatObavijest> ChatObavijest { get; set; }
+        public DbSet<NarudzbeObavijest> NarudzbeObavijest { get; set; }
+        public DbSet<Recenzija> Recenzija { get; set; }
+       // public DbSet<StanjeNarudzbe> StanjeNarudzbe { get; set; }
+        public DbSet<Tip> Tip { get; set; }
+      //  public DbSet<Tipovi> Tipovi { get; set; }
+        public DbSet<Artikal> Artikal { get; set; }
+        //TODO: Dodati jos klasa ako se promijeni model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUsers");
-            //TODO: Dodati preostale klase kad se završi model
+            modelBuilder.Entity<Korpa>().ToTable("Korpa");
+            modelBuilder.Entity<Narudzba>().ToTable("Narudzba");
+            modelBuilder.Entity<Obavijest>().ToTable("Obavijest");
+            modelBuilder.Entity<ChatObavijest>().ToTable("ChatObavijest");
+            modelBuilder.Entity<NarudzbeObavijest>().ToTable("NarudzbeObavijest");
+            modelBuilder.Entity<Recenzija>().ToTable("Recenzija");
+            modelBuilder.Ignore<StanjeNarudzbe>();
+            modelBuilder.Entity<Tip>().ToTable("Tip");
+            modelBuilder.Ignore<Tipovi>();
+            modelBuilder.Entity<Artikal>().ToTable("Artikal");
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
