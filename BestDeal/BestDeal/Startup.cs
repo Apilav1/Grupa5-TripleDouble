@@ -90,7 +90,6 @@ namespace BestDeal
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
-            // using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();
         }
 
