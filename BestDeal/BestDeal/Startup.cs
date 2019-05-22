@@ -13,45 +13,35 @@ namespace BestDeal
 {
     public class Startup
     {
-        private async Task CreateRoles(IServiceProvider serviceProvider)
+        private void CreateRoles(IServiceProvider serviceProvider)
         {
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            string[] roleNames = { "Admin", "Store-Manager", "Member" };
-            IdentityResult roleResult;
-
-            foreach (var roleName in roleNames)
+            string email = "test@test.ba";
+            Task<IdentityResult> roleResult;
+            Task<bool> daLiJeAdmin = RoleManager.RoleExistsAsync("Admin");
+            daLiJeAdmin.Wait();
+            if (!daLiJeAdmin.Result)
             {
-                var roleExist = await RoleManager.RoleExistsAsync(roleName);
-                // ensure that the role does not exist
-                if (!roleExist)
-                {
-                    //create the roles and seed them to the database: 
-                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
-                }
+                roleResult = RoleManager.CreateAsync(new IdentityRole("Admin"));
+                roleResult.Wait();
             }
-
-            // find the user with the admin email 
-            var _user = await UserManager.FindByEmailAsync("admin@email.com");
-
-            // check if the user exists
-            if (_user == null)
+          
+            // trazimo ko je admin
+            Task<ApplicationUser> testAdmin = UserManager.FindByEmailAsync(email);
+            testAdmin.Wait();
+            if (testAdmin.Result == null)
             {
-                //Here you could create the super admin who will maintain the web app
-                var poweruser = new ApplicationUser
+                ApplicationUser admin = new ApplicationUser();
+                admin.Email = email;
+                admin.UserName = email;
+                Task<IdentityResult> korisnik = UserManager.CreateAsync(admin, "Sifra1.");
+                korisnik.Wait();
+                if (korisnik.Result.Succeeded)
                 {
-                    UserName = "Admin",
-                    Email = "admin@email.com",
-                };
-                string adminPassword = "p@$$w0rd";
-
-                var createPowerUser = await UserManager.CreateAsync(poweruser, adminPassword);
-                if (createPowerUser.Succeeded)
-                {
-                    //here we tie the new user to the role
-                    await UserManager.AddToRoleAsync(poweruser, "Admin");
-
+                    Task<IdentityResult> rola = UserManager.AddToRoleAsync(admin, "Admin");
+                    rola.Wait();
                 }
             }
         }
@@ -73,7 +63,8 @@ namespace BestDeal
             })
      .AddEntityFrameworkStores<BestDealContext>()
      .AddRoles<IdentityRole>()
-     .AddSignInManager<SignInManager<ApplicationUser>>();
+     .AddSignInManager<SignInManager<ApplicationUser>>()
+     .AddDefaultUI();
             //.AddDefaultTokenProviders(); //Ovo je za 2FA
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
      .AddRazorPagesOptions(options =>
@@ -101,6 +92,7 @@ namespace BestDeal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -119,7 +111,7 @@ namespace BestDeal
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            //CreateRoles(serviceProvider).GetAwaiter().GetResult(); TODO: Ispitati gdje je ovdje problem
+           // CreateRoles(serviceProvider); //TODO: Ispitati gdje je ovdje problem
         }
     }
 }
