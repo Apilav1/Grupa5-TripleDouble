@@ -24,7 +24,7 @@ namespace BestDeal
            // System.Diagnostics.Debug.WriteLine("Dosao sam do 0");
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
             string email = "test@test.ba";
             Task<IdentityResult> roleResult;
             Task<bool> daLiJeAdmin = RoleManager.RoleExistsAsync("Admin");
@@ -38,12 +38,12 @@ namespace BestDeal
             }
 
             // trazimo ko je admin
-            Task<ApplicationUser> testAdmin = UserManager.FindByEmailAsync(email);
+            Task<IdentityUser> testAdmin = UserManager.FindByEmailAsync(email);
             testAdmin.Wait();
             System.Diagnostics.Debug.WriteLine("Dosao sam do 3");
             if (testAdmin.Result == null)
             {
-                ApplicationUser admin = new ApplicationUser();
+                IdentityUser admin = new IdentityUser();
                 admin.Email = email;
                 admin.UserName = email;
                 Task<IdentityResult> korisnik = UserManager.CreateAsync(admin, "Sifra1.");
@@ -76,9 +76,10 @@ namespace BestDeal
 
             services.AddDbContext<BestDealContext>(options =>
        options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>() //prostor za custom usera
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<BestDealContext>();
+                .AddEntityFrameworkStores<BestDealContext>()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
