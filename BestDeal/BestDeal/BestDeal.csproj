@@ -2,33 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-BestDeal-8EB81FCA-3E3D-42AB-94AC-90C39C2E1D07</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <UserSecretsId>ff575ebf-abd9-466d-9969-3962c28cfc3b</UserSecretsId>
-	 <CopyRefAssembliesToPublishDirectory>true</CopyRefAssembliesToPublishDirectory>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="bootstrap" Version="4.3.1" />
-    <PackageReference Include="bootstrap.sass" Version="4.3.1" />
-    <PackageReference Include="MassTransit" Version="5.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="Okta.AspNetCore" Version="1.1.5" />
-    <PackageReference Include="Okta.Sdk" Version="1.2.1" />
-    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css">
+    <Content Update="appsettings.Development.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\Index.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace BestDeal.Models
 {
     //TODO: Skontati koji context ide, identitymodel, No authorization problem
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    // You can add profile data for the user by adding more properties to your IdentityUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
 
-    //IdentityDbContext<ApplicationUser> ???
-    public class BestDealContext : IdentityDbContext<ApplicationUser>
+    //IdentityDbContext<IdentityUser> ???
+    public class BestDealContext : IdentityDbContext<IdentityUser>
     {
 
         //automatske migracije
@@ -28,7 +28,7 @@ namespace BestDeal.Models
                         _migrated[0] = true;
                     }*/
         }
-        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<IdentityUser> IdentityUser { get; set; }
         public DbSet<Korpa> Korpa { get; set; }
         public DbSet<Narudzba> Narudzba { get; set; }
         public DbSet<Obavijest> Obavijest { get; set; }
@@ -42,7 +42,7 @@ namespace BestDeal.Models
         //TODO: Dodati jos klasa ako se promijeni model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUsers");
+            modelBuilder.Entity<IdentityUser>().ToTable("IdentityUsers");
             modelBuilder.Entity<Korpa>().ToTable("Korpa");
             modelBuilder.Entity<Narudzba>().ToTable("Narudzba");
             modelBuilder.Entity<Obavijest>().ToTable("Obavijest");

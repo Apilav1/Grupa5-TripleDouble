@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BestDeal.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -20,7 +21,7 @@ namespace BestDeal
             }
         }*/
 
-        private static void InitializeUserAndRoles(Models.BestDealContext context)
+        private static void InitializeUserAndRoles(BestDealContext context)
         {
             // init user and roles  
         }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Drawing.Imaging;
-using System.Drawing;
 using System.ComponentModel.DataAnnotations;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BestDeal.Models
 {
@@ -18,14 +18,6 @@ namespace BestDeal.Models
         [ScaffoldColumn(false)]
         private List<Recenzija> recenzije;
 
-        public Artikal(Image slikaArtikla, Tip tipArtikla, double cijenaArtikla)//, double ocjenaArtikla)
-        {
-            this.SlikaArtikla = slikaArtikla;
-            this.tipArtikla = tipArtikla;
-            this.cijenaArtikla = cijenaArtikla;
-           // this.ocjenaArtikla = ocjenaArtikla;
-        }
-
         public Artikal(double cijenaArtikla, int idArtikla)
         {
             CijenaArtikla = cijenaArtikla;
@@ -33,7 +25,7 @@ namespace BestDeal.Models
         }
 
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala
-        public Image SlikaArtikla { get; }
+        //public Image SlikaArtikla { get; }
         [Required]
         public Tip TipArtikla { get => tipArtikla;
             set

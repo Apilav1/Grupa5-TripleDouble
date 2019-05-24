@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BestDeal.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BestDeal.Controllers
 {
@@ -15,6 +16,7 @@ namespace BestDeal.Controllers
             return View();
         }
 
+        [Authorize(Roles ="Admin")]
         public IActionResult Privacy()
         {
             return View();

@@ -1,47 +1,49 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using BestDeal.Models;
-using MassTransit.Logging.Tracing;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using BestDeal.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BestDeal.Models;
+
 namespace BestDeal
 {
     public class Startup
     {
-       // [System.Diagnostics.ConditionalAttribute("DEBUG")]
         private void CreateRoles(IServiceProvider serviceProvider)
         {
-            ConsoleTraceListener consoleTracer = new ConsoleTraceListener();
-            System.Diagnostics.Debug.WriteLine("Dosao sam do 0");
+           // System.Diagnostics.Debug.WriteLine("Dosao sam do 0");
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
             string email = "test@test.ba";
             Task<IdentityResult> roleResult;
             Task<bool> daLiJeAdmin = RoleManager.RoleExistsAsync("Admin");
             daLiJeAdmin.Wait();
-            System.Diagnostics.Debug.WriteLine("Dosao sam do 1");
+           // System.Diagnostics.Debug.WriteLine("Dosao sam do 1");
             if (!daLiJeAdmin.Result)
             {
                 roleResult = RoleManager.CreateAsync(new IdentityRole("Admin"));
                 roleResult.Wait();
                 System.Diagnostics.Debug.WriteLine("Dosao sam do 2");
             }
-          
+
             // trazimo ko je admin
-            Task<ApplicationUser> testAdmin = UserManager.FindByEmailAsync(email);
+            Task<IdentityUser> testAdmin = UserManager.FindByEmailAsync(email);
             testAdmin.Wait();
             System.Diagnostics.Debug.WriteLine("Dosao sam do 3");
             if (testAdmin.Result == null)
             {
-                ApplicationUser admin = new ApplicationUser();
+                IdentityUser admin = new IdentityUser();
                 admin.Email = email;
                 admin.UserName = email;
                 Task<IdentityResult> korisnik = UserManager.CreateAsync(admin, "Sifra1.");
@@ -54,7 +56,6 @@ namespace BestDeal
                     System.Diagnostics.Debug.WriteLine("Dosao sam do 5");
                 }
             }
-            Trace.Listeners.Add(consoleTracer);
         }
         public Startup(IConfiguration configuration)
         {
@@ -66,40 +67,26 @@ namespace BestDeal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BestDealContext>(options =>
-       options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            services.Configure<CookiePolicyOptions>(options =>
             {
-                options.User.RequireUniqueEmail = false;
-            })
-     .AddEntityFrameworkStores<BestDealContext>()
-     .AddRoles<IdentityRole>()
-     .AddSignInManager<SignInManager<ApplicationUser>>()
-     .AddDefaultUI();
-            //.AddDefaultTokenProviders(); //Ovo je za 2FA
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-     .AddRazorPagesOptions(options =>
-     {
-         options.AllowAreas = true;
-         options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
-         options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-     });
-
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = $"/Identity/Account/Login";
-                options.LogoutPath = $"/Identity/Account/Logout";
-                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddDbContext<BestDealContext>(options =>
+       options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>() //prostor za custom usera
+                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddEntityFrameworkStores<BestDealContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, RoleManager<IdentityRole> roleManager)
         {
-            //  SeedData.Initialize(app.ApplicationServices);
-            //AsyncContext.Run(async () => { await CreateRoles(serviceProvider); });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -115,14 +102,16 @@ namespace BestDeal
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
             app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-           CreateRoles(serviceProvider); //TODO: Ispitati gdje je ovdje problem
+            CreateRoles(serviceProvider);
         }
     }
 }
