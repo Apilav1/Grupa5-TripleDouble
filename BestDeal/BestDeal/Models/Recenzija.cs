@@ -20,8 +20,6 @@ namespace BestDeal.Models
         double performanceRating;
         double overallRating;
 
-        
-        public List<double> specificneOcjene;
         [Required]
         public double BatteryLifeRating { get => batteryLifeRating; set => batteryLifeRating = value; }
         [Required]
@@ -34,37 +32,20 @@ namespace BestDeal.Models
         public int IdRecenzije { get => idRecenzije; set => idRecenzije = value; }
 
         // public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)
-        public Recenzija(string tekstRecenzije, List<double> specificneOcjene)
-        {
-            this.tekstRecenzije = tekstRecenzije;
-            //this.ocjenaArtikla = ocjenaArtikla;
-            //this.specificneOcjene = specificneOcjene;
-            this.specificneOcjene = specificneOcjene;
-            BatteryLifeRating = specificneOcjene[0];
-            DesignRating = specificneOcjene[1];
-            PerformanceRating = specificneOcjene[2];
-            OverallRating = dajProsjekPojedinacnihRecenzija();
-        }
 
         public Recenzija()
         {
         }
 
+        public Recenzija(string tekstRecenzije, double overallRating)
+        {
+            tekstRecenzije = tekstRecenzije;
+        }
+
         //Nemamo property jer ne zelimo dozvoliti promjene
         double dajProsjekPojedinacnihRecenzija()
         {
-            double suma = 0.0;
-            /* for (int i = 0; i < specificneOcjene.Count; i++)
-                 suma += specificneOcjene[i].Item2;
-
-             ocjene.OverallRating = suma / specificneOcjene.Count;
-
-             return suma / specificneOcjene.Count;*/
-
-            foreach(double d in specificneOcjene)
-                suma += d;
-
-            return suma/specificneOcjene.Count;
+            return (BatteryLifeRating + OverallRating + PerformanceRating + DesignRating) / 4; 
         }
         bool daLiJePozitivnaRecenzija()
         {

@@ -49,9 +49,9 @@ namespace BestDeal.Models
         public int IdArtikla { get => idArtikla; set => idArtikla = value; }
 
 
-        public void DodajRecenziju(string tekstRecenzije, double ocjenaArtikla, List<double> specificneOcjene)
+        public void DodajRecenziju(string tekstRecenzije, double ocjenaArtikla)
         {
-            recenzije.Add(new Recenzija(tekstRecenzije, specificneOcjene));
+            recenzije.Add(new Recenzija(tekstRecenzije, OcjenaArtikla));
      
             IzracunajOcjenu();
         }
