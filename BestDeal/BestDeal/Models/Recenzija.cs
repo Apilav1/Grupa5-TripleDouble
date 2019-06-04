@@ -37,9 +37,10 @@ namespace BestDeal.Models
         {
         }
 
-        public Recenzija(string tekstRecenzije, double overallRating)
+        public Recenzija(string tekstRecenzije2, double overallRating)
         {
-            tekstRecenzije = tekstRecenzije;
+            tekstRecenzije = tekstRecenzije2;
+            OverallRating = overallRating;
         }
 
         //Nemamo property jer ne zelimo dozvoliti promjene

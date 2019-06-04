@@ -12,32 +12,29 @@ namespace BestDeal.Models
     {
         //List<Tuple<Artikal, Recenzija, double>> podaciOArtiklima;
         [Required]
-        List<Tuple<Artikal, int>> artikliKolicina;
+       List<KorpaInfo> artikliKolicina;
         int idKorpe;
         public Korpa()
         {
         }
 
-        public Korpa(List<Tuple<Artikal, int>> artikliKolicina)
+        public Korpa(int idKorpe, List<KorpaInfo> artikliKolicina)
         {
-            this.artikliKolicina = artikliKolicina;
+            IdKorpe = idKorpe;
+            ArtikliKolicina = artikliKolicina;
         }
+
 
 
         //public List<Tuple<Artikal, Recenzija, double>> PodaciOArtiklima { get => podaciOArtiklima; set => podaciOArtiklima = value; }
-        public Artikal this[int index]
-        {
-            get
-            {
-                return artikliKolicina[index].Item1;
-            }
-        }
+
         [Key]
         public int IdKorpe { get => idKorpe; set => idKorpe = value; }
+        public List<KorpaInfo> ArtikliKolicina { get => artikliKolicina; set => artikliKolicina = value; }
 
         public void DodajArtikla(Artikal artikal, int kolicina)
         {
-            artikliKolicina.Add(new Tuple<Artikal, int>(artikal, kolicina));
+            ArtikliKolicina.Add(new KorpaInfo(artikal, kolicina));
         }
     }
 }

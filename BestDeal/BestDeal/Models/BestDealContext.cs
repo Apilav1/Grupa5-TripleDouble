@@ -44,12 +44,13 @@ namespace BestDeal.Models
         {
             modelBuilder.Entity<IdentityUser>().ToTable("IdentityUsers");
             modelBuilder.Entity<Korpa>().ToTable("Korpa");
+            modelBuilder.Entity<KorpaInfo>().ToTable("Korpa");
             modelBuilder.Entity<Narudzba>().ToTable("Narudzba");
             modelBuilder.Entity<Obavijest>().ToTable("Obavijest");
             modelBuilder.Entity<ChatObavijest>().ToTable("ChatObavijest");
             modelBuilder.Entity<NarudzbeObavijest>().ToTable("NarudzbeObavijest");
             modelBuilder.Entity<Recenzija>().ToTable("Recenzija");
-            modelBuilder.Ignore<StanjeNarudzbe>();
+           // modelBuilder.Ignore<StanjeNarudzbe>();
             modelBuilder.Entity<Tip>().ToTable("Tip");
             modelBuilder.Ignore<Tipovi>();
             modelBuilder.Entity<Artikal>().ToTable("Artikal");
