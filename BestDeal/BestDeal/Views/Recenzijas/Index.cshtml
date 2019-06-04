@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BestDeal.Models.Recenzija>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BatteryLifeRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DesignRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerformanceRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverallRating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatteryLifeRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DesignRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerformanceRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverallRating)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdRecenzije">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdRecenzije">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdRecenzije">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    [Migration("20190528125315_krompir")]
-    partial class krompir
+    [Migration("20190604172427_josjedna")]
+    partial class josjedna
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,9 +45,14 @@ namespace BestDeal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.HasKey("IdKorpe");
 
                     b.ToTable("Korpa");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Korpa");
                 });
 
             modelBuilder.Entity("BestDeal.Models.Narudzba", b =>
@@ -276,6 +281,27 @@ namespace BestDeal.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("BestDeal.Models.KorpaInfo", b =>
+                {
+                    b.HasBaseType("BestDeal.Models.Korpa");
+
+                    b.Property<int?>("AIdArtikla");
+
+                    b.Property<int>("IdKorpe1");
+
+                    b.Property<int>("KolicinaArtikla");
+
+                    b.Property<int?>("KorpaIdKorpe");
+
+                    b.HasIndex("AIdArtikla");
+
+                    b.HasIndex("KorpaIdKorpe");
+
+                    b.ToTable("Korpa");
+
+                    b.HasDiscriminator().HasValue("KorpaInfo");
+                });
+
             modelBuilder.Entity("BestDeal.Models.ChatObavijest", b =>
                 {
                     b.HasBaseType("BestDeal.Models.Obavijest");
@@ -352,6 +378,17 @@ namespace BestDeal.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BestDeal.Models.KorpaInfo", b =>
+                {
+                    b.HasOne("BestDeal.Models.Artikal", "A")
+                        .WithMany()
+                        .HasForeignKey("AIdArtikla");
+
+                    b.HasOne("BestDeal.Models.Korpa")
+                        .WithMany("ArtikliKolicina")
+                        .HasForeignKey("KorpaIdKorpe");
                 });
 #pragma warning restore 612, 618
         }

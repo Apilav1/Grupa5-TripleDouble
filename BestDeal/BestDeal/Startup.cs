@@ -14,6 +14,7 @@ using BestDeal.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BestDeal.Models;
+using Microsoft.Extensions.Options;
 
 namespace BestDeal
 {
@@ -111,7 +112,7 @@ namespace BestDeal
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            CreateRoles(serviceProvider);
+           // CreateRoles(serviceProvider);
         }
     }
 }
