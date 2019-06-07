@@ -11,6 +11,7 @@ namespace BestDeal.Models
     public sealed class Tipovi
     {
         private static Tipovi instancaTipovi; //instanca klase
+        private static Object thisLock = new Object();
         List<Tip> listaTipova = new List<Tip>();
         private static readonly object thread = new object();
 

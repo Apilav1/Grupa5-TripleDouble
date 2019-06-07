@@ -4,14 +4,16 @@ using BestDeal.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    partial class BestDealContextModelSnapshot : ModelSnapshot
+    [Migration("20190607082456_prilagodbaTipa")]
+    partial class prilagodbaTipa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,19 +29,7 @@ namespace BestDeal.Migrations
 
                     b.Property<double>("CijenaArtikla");
 
-                    b.Property<string>("DetaljniOpis");
-
-                    b.Property<string>("KratkiOpis")
-                        .IsRequired();
-
-                    b.Property<string>("NazivArtikla")
-                        .IsRequired();
-
                     b.Property<int>("TipArtiklaidTipa");
-
-                    b.Property<string>("URLMaleSlike1");
-
-                    b.Property<string>("URLSlike1");
 
                     b.HasKey("IdArtikla");
 

@@ -12,6 +12,7 @@ namespace BestDeal.Controllers
     public class ArtikliController : Controller
     {
         private readonly BestDealContext _context;
+
         public ArtikliController(BestDealContext context)
         {
             _context = context;
@@ -20,16 +21,9 @@ namespace BestDeal.Controllers
         // GET: Artikli
         public async Task<IActionResult> Index()
         {
-           // ViewBag.tipovi = _context.Tip.ToList();
             return View(await _context.Artikal.ToListAsync());
         }
-        public JsonResult dajTip(string ime)
-        {
-            List<Tip> lista = new List<Tip>();
-            lista = _context.Tip.Where(a => a.Ime == ime).ToList();
-            lista.Insert(0, new Tip("Odaberite tip artikla"));
-            return Json(new SelectList(lista, "Ime"));
-        }
+
         // GET: Artikli/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -51,7 +45,6 @@ namespace BestDeal.Controllers
         // GET: Artikli/Create
         public IActionResult Create()
         {
-            ViewBag.tipovi = _context.Tip.ToList();
             return View();
         }
 
@@ -60,7 +53,7 @@ namespace BestDeal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CijenaArtikla,IdArtikla")] Artikal artikal)
+        public async Task<IActionResult> Create([Bind("CijenaArtikla,IdArtikla,NazivArtikla,KratkiOpis,DetaljniOpis,URLSlike1,URLMaleSlike1")] Artikal artikal)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +85,7 @@ namespace BestDeal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CijenaArtikla,IdArtikla")] Artikal artikal)
+        public async Task<IActionResult> Edit(int id, [Bind("CijenaArtikla,IdArtikla,NazivArtikla,KratkiOpis,DetaljniOpis,URLSlike1,URLMaleSlike1")] Artikal artikal)
         {
             if (id != artikal.IdArtikla)
             {

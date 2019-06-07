@@ -18,6 +18,31 @@
                 <span asp-validation-for="CijenaArtikla" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="NazivArtikla" class="control-label"></label>
+                <input asp-for="NazivArtikla" class="form-control" />
+                <span asp-validation-for="NazivArtikla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KratkiOpis" class="control-label"></label>
+                <input asp-for="KratkiOpis" class="form-control" />
+                <span asp-validation-for="KratkiOpis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetaljniOpis" class="control-label"></label>
+                <input asp-for="DetaljniOpis" class="form-control" />
+                <span asp-validation-for="DetaljniOpis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="URLSlike1" class="control-label"></label>
+                <input asp-for="URLSlike1" class="form-control" />
+                <span asp-validation-for="URLSlike1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="URLMaleSlike1" class="control-label"></label>
+                <input asp-for="URLMaleSlike1" class="form-control" />
+                <span asp-validation-for="URLMaleSlike1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -26,33 +51,25 @@
 
         @*<label asp-for="IDProduktgruppe" class="control-label"></label>
 
-        <input asp-for="IDProduktgruppe" class="form-control" />
+            <input asp-for="IDProduktgruppe" class="form-control" />
 
-        <span asp-validation-for="IDProduktgruppe" class="text-danger"></span>*@
+            <span asp-validation-for="IDProduktgruppe" class="text-danger"></span>*@
 
 
 
 
 
         <label asp-for="TipArtikla" class="control-label"></label>
-            <select asp-for="TipArtikla"
-                    asp-items="@(new SelectList(ViewBag.tipovi, "Ime"))"></select>
+        <select asp-for="TipArtikla"
+                asp-items="@(new SelectList(ViewBag.tipovi, "Ime"))"></select>
 
 
 
     </div>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script>
-    </script>
-    <div class="form-group">
-
-        <input type="submit" value="Create" class="btn btn-default" />
-
-    </div>
-
-
 </div>
-
+<label asp-for="TipArtikla" class="control-label"></label>
+<select asp-for="TipArtikla"
+        asp-items="@(new SelectList(ViewBag.tipovi, "Ime"))"></select>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

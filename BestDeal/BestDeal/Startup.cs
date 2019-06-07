@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BestDeal.Models;
 using Microsoft.Extensions.Options;
+using BestDeal.AdapteriPodataka;
+using BestDeal.Interfaces;
 
 namespace BestDeal
 {
@@ -26,7 +28,7 @@ namespace BestDeal
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            string email = "test@test.ba";
+            string email = "admin@bestdeal.ba";
             Task<IdentityResult> roleResult;
             Task<bool> daLiJeAdmin = RoleManager.RoleExistsAsync("Admin");
             daLiJeAdmin.Wait();
@@ -81,7 +83,8 @@ namespace BestDeal
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<BestDealContext>()
                 .AddDefaultTokenProviders();
-
+            services.AddTransient<IArtikli, ArtikalKreator>();
+            services.AddTransient<ITipovi, TipKreator>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

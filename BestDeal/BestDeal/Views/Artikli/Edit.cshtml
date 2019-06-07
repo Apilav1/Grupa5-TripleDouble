@@ -19,6 +19,31 @@
             </div>
             <input type="hidden" asp-for="IdArtikla" />
             <div class="form-group">
+                <label asp-for="NazivArtikla" class="control-label"></label>
+                <input asp-for="NazivArtikla" class="form-control" />
+                <span asp-validation-for="NazivArtikla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KratkiOpis" class="control-label"></label>
+                <input asp-for="KratkiOpis" class="form-control" />
+                <span asp-validation-for="KratkiOpis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetaljniOpis" class="control-label"></label>
+                <input asp-for="DetaljniOpis" class="form-control" />
+                <span asp-validation-for="DetaljniOpis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="URLSlike1" class="control-label"></label>
+                <input asp-for="URLSlike1" class="form-control" />
+                <span asp-validation-for="URLSlike1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="URLMaleSlike1" class="control-label"></label>
+                <input asp-for="URLMaleSlike1" class="form-control" />
+                <span asp-validation-for="URLMaleSlike1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

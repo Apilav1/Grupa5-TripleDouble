@@ -9,6 +9,7 @@ namespace BestDeal.ViewModels
     public class ArtikliViewModel
     {
         public Artikal artikal { get; set; }
-        public IEnumerable<Tip> tipoviBaza { get; set; }
+        public IEnumerable<Artikal> artikli { get; set; }
+        public string trenutniTip { get; set; }
     }
 }

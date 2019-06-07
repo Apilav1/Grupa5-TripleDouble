@@ -9,14 +9,17 @@ namespace BestDeal.Models
     //klasa koja omogucava dodavanje tipova
     public class Tip
     {
+        public Tip()
+        {
+        }
         //TODO:Moguce opcije nekog IDa ili liste specificnih polja koju ima svaki tip (radi razlicitih detalja kod recenzija i sl.)
         public Tip(string ime)
         {
             Ime = ime;
         }
-        [Required]
         [Key]
-        public string Ime { get; private set; }
+        public int idTipa { get; set; }
+        public string Ime { get;  set; }
         public override bool Equals(object obj)
         {
             var other = obj as Tip;
@@ -26,9 +29,10 @@ namespace BestDeal.Models
             }
             return other == this;
         }
+
         public override int GetHashCode()
         {
-            return Ime.GetHashCode();
+            return HashCode.Combine(idTipa);
         }
 
         public static bool operator ==(Tip Tip1, Tip Tip2)

@@ -9,23 +9,23 @@ using BestDeal.Models;
 
 namespace BestDeal.Controllers
 {
-    public class TipsController : Controller
+    public class TipController : Controller
     {
         private readonly BestDealContext _context;
 
-        public TipsController(BestDealContext context)
+        public TipController(BestDealContext context)
         {
             _context = context;
         }
 
-        // GET: Tips
+        // GET: Tip
         public async Task<IActionResult> Index()
         {
             return View(await _context.Tip.ToListAsync());
         }
 
-        // GET: Tips/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Tip/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -33,7 +33,7 @@ namespace BestDeal.Controllers
             }
 
             var tip = await _context.Tip
-                .FirstOrDefaultAsync(m => m.Ime == id);
+                .FirstOrDefaultAsync(m => m.idTipa == id);
             if (tip == null)
             {
                 return NotFound();
@@ -42,18 +42,18 @@ namespace BestDeal.Controllers
             return View(tip);
         }
 
-        // GET: Tips/Create
+        // GET: Tip/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Tips/Create
+        // POST: Tip/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Ime")] Tip tip)
+        public async Task<IActionResult> Create([Bind("idTipa,Ime")] Tip tip)
         {
             if (ModelState.IsValid)
             {
@@ -64,8 +64,8 @@ namespace BestDeal.Controllers
             return View(tip);
         }
 
-        // GET: Tips/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Tip/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -80,14 +80,14 @@ namespace BestDeal.Controllers
             return View(tip);
         }
 
-        // POST: Tips/Edit/5
+        // POST: Tip/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Ime")] Tip tip)
+        public async Task<IActionResult> Edit(int id, [Bind("idTipa,Ime")] Tip tip)
         {
-            if (id != tip.Ime)
+            if (id != tip.idTipa)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace BestDeal.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TipExists(tip.Ime))
+                    if (!TipExists(tip.idTipa))
                     {
                         return NotFound();
                     }
@@ -115,8 +115,8 @@ namespace BestDeal.Controllers
             return View(tip);
         }
 
-        // GET: Tips/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Tip/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -124,7 +124,7 @@ namespace BestDeal.Controllers
             }
 
             var tip = await _context.Tip
-                .FirstOrDefaultAsync(m => m.Ime == id);
+                .FirstOrDefaultAsync(m => m.idTipa == id);
             if (tip == null)
             {
                 return NotFound();
@@ -133,10 +133,10 @@ namespace BestDeal.Controllers
             return View(tip);
         }
 
-        // POST: Tips/Delete/5
+        // POST: Tip/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tip = await _context.Tip.FindAsync(id);
             _context.Tip.Remove(tip);
@@ -144,9 +144,9 @@ namespace BestDeal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TipExists(string id)
+        private bool TipExists(int id)
         {
-            return _context.Tip.Any(e => e.Ime == id);
+            return _context.Tip.Any(e => e.idTipa == id);
         }
     }
 }

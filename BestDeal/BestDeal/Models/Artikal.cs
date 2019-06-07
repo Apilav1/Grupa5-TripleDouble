@@ -10,13 +10,22 @@ namespace BestDeal.Models
 {
     public class Artikal
     {
+        private string nazivArtikla;
+        private string kratkiOpis;
+        private string detaljniOpis;
+        private string URLSlike;
+        private string URLMaleSlike;
         private Tip tipArtikla;
         double cijenaArtikla;
         //TODO: Mozda lista recenzija umjesto specificne ocjene artikla, ljepse izgleda
         double ocjenaArtikla;
         int idArtikla;
         [ScaffoldColumn(false)]
-        private List<Recenzija> recenzije;
+        private List<Recenzija> recenzije=new List<Recenzija>();
+
+        public Artikal()
+        {
+        }
 
         public Artikal(double cijenaArtikla, int idArtikla)
         {
@@ -47,7 +56,13 @@ namespace BestDeal.Models
         public double OcjenaArtikla { get => ocjenaArtikla; } //set => ocjenaArtikla = value; }
         [Key]
         public int IdArtikla { get => idArtikla; set => idArtikla = value; }
-
+        [Required]
+        public string NazivArtikla { get => nazivArtikla; set => nazivArtikla = value; }
+        [Required]
+        public string KratkiOpis { get => kratkiOpis; set => kratkiOpis = value; }
+        public string DetaljniOpis { get => detaljniOpis; set => detaljniOpis = value; }
+        public string URLSlike1 { get => URLSlike; set => URLSlike = value; }
+        public string URLMaleSlike1 { get => URLMaleSlike; set => URLMaleSlike = value; }
 
         public void DodajRecenziju(string tekstRecenzije, double ocjenaArtikla)
         {
