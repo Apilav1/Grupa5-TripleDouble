@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    [Migration("20190607082456_prilagodbaTipa")]
-    partial class prilagodbaTipa
+    [Migration("20190608210542_korpa")]
+    partial class korpa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,19 @@ namespace BestDeal.Migrations
 
                     b.Property<double>("CijenaArtikla");
 
+                    b.Property<string>("DetaljniOpis");
+
+                    b.Property<string>("KratkiOpis")
+                        .IsRequired();
+
+                    b.Property<string>("NazivArtikla")
+                        .IsRequired();
+
                     b.Property<int>("TipArtiklaidTipa");
+
+                    b.Property<string>("URLMaleSlike1");
+
+                    b.Property<string>("URLSlike1");
 
                     b.HasKey("IdArtikla");
 
@@ -40,12 +52,13 @@ namespace BestDeal.Migrations
 
             modelBuilder.Entity("BestDeal.Models.Korpa", b =>
                 {
-                    b.Property<int>("IdKorpe")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("IdKorpe")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
+
+                    b.Property<string>("SlikaKorpe");
 
                     b.HasKey("IdKorpe");
 
@@ -62,7 +75,7 @@ namespace BestDeal.Migrations
 
                     b.Property<DateTime>("DatumVrijemeNarudzbe");
 
-                    b.Property<int?>("OdabraniArtikliIdKorpe");
+                    b.Property<string>("OdabraniArtikliIdKorpe");
 
                     b.HasKey("IdNarudzbe");
 
@@ -289,17 +302,19 @@ namespace BestDeal.Migrations
 
                     b.Property<int?>("AIdArtikla");
 
-                    b.Property<int>("IdKorpe1");
+                    b.Property<int>("IdKomponente");
+
+                    b.Property<string>("IdKorpe1");
 
                     b.Property<int>("KolicinaArtikla");
 
-                    b.Property<int?>("KorpaIdKorpe");
+                    b.Property<string>("KorpaIdKorpe");
 
                     b.HasIndex("AIdArtikla");
 
                     b.HasIndex("KorpaIdKorpe");
 
-                    b.ToTable("Korpa");
+                    b.ToTable("KorpaInfo");
 
                     b.HasDiscriminator().HasValue("KorpaInfo");
                 });

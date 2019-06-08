@@ -29,7 +29,8 @@ namespace BestDeal.Models
                     }*/
         }
         public DbSet<IdentityUser> IdentityUser { get; set; }
-        public DbSet<Korpa> Korpa { get; set; }
+
+        public DbSet<KorpaInfo> KorpaInfo { get; set; }
         public DbSet<Narudzba> Narudzba { get; set; }
         public DbSet<Obavijest> Obavijest { get; set; }
         public DbSet<ChatObavijest> ChatObavijest { get; set; }
@@ -39,18 +40,18 @@ namespace BestDeal.Models
         public DbSet<Tip> Tip { get; set; }
       //  public DbSet<Tipovi> Tipovi { get; set; }
         public DbSet<Artikal> Artikal { get; set; }
-        //TODO: Dodati jos klasa ako se promijeni model
+       public DbSet<Korpa> Korpa { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<IdentityUser>().ToTable("IdentityUsers");
             modelBuilder.Entity<Korpa>().ToTable("Korpa");
-            modelBuilder.Entity<KorpaInfo>().ToTable("Korpa");
+            modelBuilder.Entity<KorpaInfo>().ToTable("KorpaInfo");
             modelBuilder.Entity<Narudzba>().ToTable("Narudzba");
             modelBuilder.Entity<Obavijest>().ToTable("Obavijest");
             modelBuilder.Entity<ChatObavijest>().ToTable("ChatObavijest");
             modelBuilder.Entity<NarudzbeObavijest>().ToTable("NarudzbeObavijest");
             modelBuilder.Entity<Recenzija>().ToTable("Recenzija");
-           // modelBuilder.Ignore<StanjeNarudzbe>();
+            modelBuilder.Ignore<StanjeNarudzbe>();
             modelBuilder.Entity<Tip>().ToTable("Tip");
             modelBuilder.Ignore<Tipovi>();
             modelBuilder.Entity<Artikal>().ToTable("Artikal");

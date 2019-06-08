@@ -1,10 +1,11 @@
-﻿@model Artikal
+﻿@using System.Globalization
+@model Artikal
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
         <img src="@Model.URLMaleSlike1" alt="" />
         <div class="caption">
-            <h3 class="pull-right">@Model.CijenaArtikla.ToString("c")</h3>
+            <h3 class="pull-right">@Model.CijenaArtikla.ToString("c", CultureInfo.CreateSpecificCulture("hr-BA"))</h3>
             <h3>
                 <a>@Model.NazivArtikla</a>
             </h3>

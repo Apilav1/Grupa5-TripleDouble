@@ -1,0 +1,55 @@
+﻿@using BestDeal.ViewModels
+@using System.Globalization
+@model KorpaViewModel
+
+<div class="row checkoutForm">
+    <h2>Vaša korpa</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Odabrana količina</th>
+                <th>Artikal</th>
+                <th class="text-right">Cijena</th>
+                <th class="text-right">Ukupno</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.korpa.ArtikliKolicina)
+            {
+                <tr>
+                    <td class="text-center">@line.KolicinaArtikla</td>
+                    <td class="text-left">@line.A.NazivArtikla</td>
+                    <td class="text-right">@line.A.CijenaArtikla.ToString("c", CultureInfo.CreateSpecificCulture("hr-BA"))</td>
+                    <td class="text-right">
+                        @((line.KolicinaArtikla * line.A.CijenaArtikla).ToString("c", CultureInfo.CreateSpecificCulture("hr-BA")))
+                    </td>
+                    <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-drinkId="@line.A.IdArtikla"></a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Ukupno:</td>
+                <td class="text-right">
+                    @Model.UkupnaCijena.ToString("c", CultureInfo.CreateSpecificCulture("hr-BA"))
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <div class="btn-group ">
+            <a class="btn btn-success" asp-controller="Order" asp-action="Checkout">Plaćanje</a>
+            <a class="btn-group">
+                <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Dodaj još artikala<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-category="Alcoholic">Opcija1</a></li>
+                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-category="Non-alcoholic">Opcija2</a></li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</div>

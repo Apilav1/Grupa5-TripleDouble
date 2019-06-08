@@ -8,10 +8,10 @@ namespace BestDeal.Models
 {
     public class KorpaInfo:Korpa
     {
-        int idKorpe;
+        string idKorpe;
         Artikal a;
         int kolicinaArtikla;
-
+        int idKomponente;
         public KorpaInfo()
         {
         }
@@ -25,6 +25,7 @@ namespace BestDeal.Models
         public Artikal A { get => a; set => a = value; }
         public int KolicinaArtikla { get => kolicinaArtikla; set => kolicinaArtikla = value; }
 
-        public int IdKorpe1 { get => idKorpe; set => idKorpe = value; }
+        public string IdKorpe1 { get => idKorpe; set => idKorpe = value; }
+        public int IdKomponente { get => idKomponente; set => idKomponente = value; }
     }
 }

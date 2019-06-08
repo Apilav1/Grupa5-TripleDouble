@@ -1,28 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BestDeal.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using BestDeal.Models;
+
 namespace BestDeal.Controllers
 {
-    public class KorpeController : Controller
+    public class KorpaController : Controller
     {
         private readonly BestDealContext _context;
 
-        public KorpeController(BestDealContext context)
+        public KorpaController(BestDealContext context)
         {
             _context = context;
         }
 
-        // GET: Korpe
+        // GET: Korpa
         public async Task<IActionResult> Index()
         {
             return View(await _context.Korpa.ToListAsync());
         }
 
-        // GET: Korpe/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Korpa/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -39,18 +42,18 @@ namespace BestDeal.Controllers
             return View(korpa);
         }
 
-        // GET: Korpe/Create
+        // GET: Korpa/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Korpe/Create
+        // POST: Korpa/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdKorpe")] Korpa korpa)
+        public async Task<IActionResult> Create([Bind("IdKorpe,SlikaKorpe")] Korpa korpa)
         {
             if (ModelState.IsValid)
             {
@@ -61,8 +64,8 @@ namespace BestDeal.Controllers
             return View(korpa);
         }
 
-        // GET: Korpe/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Korpa/Edit/5
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -77,12 +80,12 @@ namespace BestDeal.Controllers
             return View(korpa);
         }
 
-        // POST: Korpe/Edit/5
+        // POST: Korpa/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdKorpe")] Korpa korpa)
+        public async Task<IActionResult> Edit(string id, [Bind("IdKorpe,SlikaKorpe")] Korpa korpa)
         {
             if (id != korpa.IdKorpe)
             {
@@ -112,8 +115,8 @@ namespace BestDeal.Controllers
             return View(korpa);
         }
 
-        // GET: Korpe/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Korpa/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -130,10 +133,10 @@ namespace BestDeal.Controllers
             return View(korpa);
         }
 
-        // POST: Korpe/Delete/5
+        // POST: Korpa/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var korpa = await _context.Korpa.FindAsync(id);
             _context.Korpa.Remove(korpa);
@@ -141,7 +144,7 @@ namespace BestDeal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KorpaExists(int id)
+        private bool KorpaExists(string id)
         {
             return _context.Korpa.Any(e => e.IdKorpe == id);
         }

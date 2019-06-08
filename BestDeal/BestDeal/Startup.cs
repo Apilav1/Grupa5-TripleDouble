@@ -85,7 +85,11 @@ namespace BestDeal
                 .AddDefaultTokenProviders();
             services.AddTransient<IArtikli, ArtikalKreator>();
             services.AddTransient<ITipovi, TipKreator>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => Korpa.DajKorpu(sp));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -108,7 +112,7 @@ namespace BestDeal
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
