@@ -11,6 +11,7 @@ namespace BestDeal.Models
     {
         [Required]
         int idRecenzije;
+        int idArtikla;
         string tekstRecenzije;
         //double ocjenaArtikla;
         //TODO: specificne ocjene sada iskljucivo ovise o tipu artikla, potrebno je negdje definirati sta su one za koji tip

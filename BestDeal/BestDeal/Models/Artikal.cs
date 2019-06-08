@@ -40,7 +40,7 @@ namespace BestDeal.Models
             set
             {
                 //ako postoji tip ne treba dodavati novi
-                foreach (Tip t in Tipovi.getInstance().ListaTipova)
+                foreach (Tip t in Tipovi.getInstance().ListaTipova.ToList())
                     if (t.Equals(value)) tipArtikla = value;
                 else
                     {
