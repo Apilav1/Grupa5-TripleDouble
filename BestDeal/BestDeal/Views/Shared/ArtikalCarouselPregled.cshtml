@@ -1,0 +1,19 @@
+﻿@using System.Globalization
+@model Artikal
+
+        <div class="carousel-item active">
+            <div class="col-12 col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" src=@Model.URLSlike1
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold">@Model.NazivArtikla</h4>
+                        <p class="card-text">
+                            @Model.KratkiOpis
+                        </p>
+                        <h4 class="card-title font-weight-bold">Cijena: @Model.CijenaArtikla.ToString("c", CultureInfo.CreateSpecificCulture("hr-BA"))</h4>
+                        <a class="btn btn-primary btn-md btn-rounded">Dodaj</a>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -6,26 +6,38 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BestDeal.Models;
 using Microsoft.AspNetCore.Authorization;
+using BestDeal.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace BestDeal.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IArtikli _artikli;
+        public HomeController(IArtikli artikli)
         {
-            return View();
+            _artikli = artikli;
+        }
+        public ViewResult Index()
+        {
+            var pocetnaVM = new HomeViewModel
+            {
+                odabraniArtikli = _artikli.artikliApp
+            };
+            return View(pocetnaVM);
         }
 
-        [Authorize(Roles ="Admin")]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        /*  //[Authorize(Roles ="Admin")]
+          public IActionResult Privacy()
+          {
+              return View();
+          }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+          [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+          public IActionResult Error()
+          {
+              return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+          }
+      }*/
     }
 }
