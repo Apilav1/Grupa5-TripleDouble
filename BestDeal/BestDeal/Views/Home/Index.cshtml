@@ -1,13 +1,60 @@
 ﻿@using BestDeal.ViewModels
 @model HomeViewModel
 
-@{
-    await Html.RenderPartialAsync("ArtikalCarouselPocetna");
-}
-<h2>Istaknuti artikli</h2>
-<div class="row">
-    @foreach (var artikal in Model.odabraniArtikli)
-    {
-        @await Html.PartialAsync("ArtikalCarouselPregled", artikal)
-    }
-</div>
+
+    <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+
+        <!--Controls-->
+        <div class="controls-top">
+            <a class="btn-floating" href="#carousel-example-multi" data-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <a class="btn-floating" href="#carousel-example-multi" data-slide="next">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+        <!--/.Controls-->
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="1"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="2"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="3"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="4"></li>
+            <li data-target="#carousel-example-multi" data-slide-to="5"></li>
+        </ol>
+        <!--/.Indicators-->
+
+        <div class="carousel-inner v-2" role="listbox">
+
+            <div class="carousel-item active">
+                <div class="col-12">
+                    <div class="card mb-2">
+                        <img class="card-img-top" src="~/lib/slike/best-deal.jpg"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title font-weight-bold">Pozdrav!</h4>
+                            <p class="card-text">
+                               Dobrodošli u BestDeal online prodavnicu!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+                @{
+                    foreach (var artikal in Model.odabraniArtikli)
+                    {
+                        await Html.RenderPartialAsync("ArtikalCarouselPocetna", artikal);
+                    }
+                }
+        </div>
+        </div>
+            <h2>Istaknuti artikli</h2>
+            <div class="row">
+                @foreach (var artikal in Model.odabraniArtikli)
+                {
+                    @await Html.PartialAsync("ArtikalPregled", artikal)
+                }
+            </div>
