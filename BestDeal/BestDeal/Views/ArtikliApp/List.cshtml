@@ -30,7 +30,7 @@
         @{
             foreach (Artikal artikal in Model.artikli.ToList())
             {
-                @await Html.PartialAsync("ArtikalCarouselPregled", artikal)
+                @await Html.PartialAsync("ArtikalPregled", artikal)
             }
         }
     </div>
