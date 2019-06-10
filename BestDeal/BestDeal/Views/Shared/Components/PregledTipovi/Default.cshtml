@@ -1,16 +1,20 @@
 ﻿
 <li class="dropdown">
-    <a asp-controller="Artikal"
+    <a asp-controller="ArtikliApp"
        asp-action="Index"
        class="dropdown-toggle" data-toggle="dropdown">Artikli<b class="caret"></b></a>
     <ul class="dropdown-menu">
+        @{
+            int brojac = 0;
+
         @foreach (var tip in Model)
         {
+            brojac++;
             <li>
-                <a asp-controller="ArtikliApp" asp-action="List"
-                   asp-route-category="@tip.Ime">@tip.Ime</a>
+                <a asp-controller="ArtikliApp" asp-action="List" asp-route-tip="@tip.Ime">@tip.Ime</a>
             </li>
         }
+            }
         <li class="divider"></li>
         <li>
             <a asp-controller="ArtikliApp" asp-action="List" asp-route-category="">Pregledaj sve artikle</a>

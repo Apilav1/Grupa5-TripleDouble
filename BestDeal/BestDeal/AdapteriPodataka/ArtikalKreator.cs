@@ -23,7 +23,7 @@ namespace BestDeal.AdapteriPodataka
                         DetaljniOpis="Povežite se sa cijenjenim HP 250 notebook računarima. Završajite poslovne zadatke sa Intel® tehnologijom, osnovnim alatima za saradnju koji su učitani na HP 250. Izdržljiva šasija pomaže zaštiti laptopa od strogosti dana.",
                         URLMaleSlike1="https://static.toiimg.com/photo/60104728/HP-15-BS542TU-2EY84PA-Laptop-Core-i3-6th-Gen4-GB1-TBDOS.jpg",
                         URLSlike1="https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
-                        TipArtikla =_tipKreator.tipoviApp.First()
+                        TipArtikla =_tipKreator.vratiTip("Laptopi")
                     },
                     new Artikal
                     {
@@ -33,7 +33,7 @@ namespace BestDeal.AdapteriPodataka
                         DetaljniOpis="With up to Intel Pentium® Silver processing, the IdeaPad D330 has real computing power—and all the fun and mobility of a lightweight tablet. From multitasking to connecting with friends online and streaming shows, the D330 gives you the freedom to do more, anywhere.",
                         URLMaleSlike1="https://images-na.ssl-images-amazon.com/images/I/41FYl0JeBtL._SX425_.jpg",
                         URLSlike1="https://www.wootware.co.za/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/x/fxpapmt2ez1.jpg",
-                        TipArtikla =_tipKreator.tipoviApp.First()
+                        TipArtikla =_tipKreator.vratiTip("Laptopi")
                     }
                 };
             }

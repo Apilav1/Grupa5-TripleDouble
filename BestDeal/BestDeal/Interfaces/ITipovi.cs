@@ -9,5 +9,6 @@ namespace BestDeal.Interfaces
     public interface ITipovi
     {
         IEnumerable<Tip> tipoviApp { get; }
+       Tip vratiTip(string nazivTipa);
     }
 }
