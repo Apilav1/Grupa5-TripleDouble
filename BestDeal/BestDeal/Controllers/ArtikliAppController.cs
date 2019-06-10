@@ -28,13 +28,13 @@ namespace BestDeal.Controllers
             vm.trenutniTip = "NekiTip";
             return View(vm);
         }*/
-        public static void WriteErrorLog(string strErrorText)
+        /*public static void WriteErrorLog(string strErrorText)
         {
             try
             {
                 //DECLARE THE FILENAME FROM THE ERROR LOG
                 string strFileName = "errorLog.txt";
-                /*DECLARE THE FOLDER WHERE THE LOGFILE HAS TO BE  STORED, IN THIS EXAMPLE WE CHOSE THE PATH OF THE CURRENT APPLICATION*/
+                /*DECLARE THE FOLDER WHERE THE LOGFILE HAS TO BE  STORED, IN THIS EXAMPLE WE CHOSE THE PATH OF THE CURRENT APPLICATION
                 string strPath = "C:\\Users\\Mirza\\Documents\\GitHub\\Grupa5-TripleDouble";
                 //WRITE THE ERROR TEXT AND THE CURRENT DATE-TIME TO THE ERROR FILE
                 System.IO.File.AppendAllText(strPath + "\\" + strFileName, strErrorText + " - " + DateTime.Now.ToString() + "\r\n");
@@ -43,13 +43,13 @@ namespace BestDeal.Controllers
             {
                 WriteErrorLog("Error in WriteErrorLog: " + ex.Message);
             }
-        }
+        }*/
         public ViewResult List(string tip)
         {
             string _tip = tip;
             IEnumerable<Artikal> artikliA;
             string sadasnjiTip = string.Empty;
-            WriteErrorLog(tip);
+            //WriteErrorLog(tip);
             if (string.IsNullOrEmpty(tip))
             {
                 artikliA = _artikliApp.artikliApp.OrderBy(n => n.IdArtikla);
