@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Drawing.Imaging;
 using System.ComponentModel.DataAnnotations;
 using static System.Net.Mime.MediaTypeNames;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestDeal.Models
 {
@@ -19,12 +20,14 @@ namespace BestDeal.Models
         double cijenaArtikla;
         //TODO: Mozda lista recenzija umjesto specificne ocjene artikla, ljepse izgleda
         double ocjenaArtikla;
+        static int id = 100;
         int idArtikla;
         [ScaffoldColumn(false)]
         private List<Recenzija> recenzije=new List<Recenzija>();
 
         public Artikal()
         {
+            id++;
         }
 
         public Artikal(double cijenaArtikla, int idArtikla)
@@ -55,6 +58,7 @@ namespace BestDeal.Models
         [ScaffoldColumn(false)]
         public double OcjenaArtikla { get => ocjenaArtikla; } //set => ocjenaArtikla = value; }
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdArtikla { get => idArtikla; set => idArtikla = value; }
         [Required]
         public string NazivArtikla { get => nazivArtikla; set => nazivArtikla = value; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BestDeal.Models
 {
@@ -17,7 +18,9 @@ namespace BestDeal.Models
         {
             Ime = ime;
         }
+
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idTipa { get; set; }
         public string Ime { get;  set; }
         public override bool Equals(object obj)

@@ -22,10 +22,16 @@ namespace BestDeal.Models
             this.KolicinaArtikla = kolicinaArtikla;
         }
 
+        public KorpaInfo(string idKorpe, Artikal a, int kolicinaArtikla)
+        {
+            this.idKorpe = idKorpe;
+            this.a = a;
+            this.kolicinaArtikla = kolicinaArtikla;
+        }
+
         public Artikal A { get => a; set => a = value; }
         public int KolicinaArtikla { get => kolicinaArtikla; set => kolicinaArtikla = value; }
 
         public string IdKorpe1 { get => idKorpe; set => idKorpe = value; }
-        public int IdKomponente { get => idKomponente; set => idKomponente = value; }
     }
 }

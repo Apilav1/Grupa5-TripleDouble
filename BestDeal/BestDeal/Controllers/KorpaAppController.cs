@@ -3,6 +3,7 @@ using BestDeal.Models;
 using BestDeal.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 namespace BestDeal.Controllers
@@ -18,7 +19,7 @@ namespace BestDeal.Controllers
             _korpica = k;
         }
 
-        [Authorize]
+
         public ViewResult Index()
         {
             var items = _korpica.DajNaruceneArtikle();
@@ -32,10 +33,26 @@ namespace BestDeal.Controllers
             return View(korpaPogled);
         }
 
-        [Authorize]
-        public RedirectToActionResult AddToShoppingCart(int artikalID)
+      /*  public static void WriteErrorLog(string strErrorText)
+       {
+           try
+           {
+               //DECLARE THE FILENAME FROM THE ERROR LOG
+               string strFileName = "errorLog.txt";
+               string strPath = "C:\\Users\\Mirza\\Documents\\GitHub\\Grupa5-TripleDouble";
+               //WRITE THE ERROR TEXT AND THE CURRENT DATE-TIME TO THE ERROR FILE
+               System.IO.File.AppendAllText(strPath + "\\" + strFileName, strErrorText + " - " + DateTime.Now.ToString() + "\r\n");
+           }
+           catch (Exception ex)
+           {
+               WriteErrorLog("Error in WriteErrorLog: " + ex.Message);
+           }
+       }*/
+
+        public RedirectToActionResult DodajKorpa(int artikalID)
         {
-            var odabrani = _artikliApp.odabraniArtikli.FirstOrDefault(p => p.IdArtikla == artikalID);
+           // WriteErrorLog(artikalID.ToString());
+            Artikal odabrani = _artikliApp.artikliApp.FirstOrDefault(p => p.IdArtikla == artikalID);
             if (odabrani != null)
             {
                 _korpica.DodajUKorpu(odabrani, 1);
@@ -43,9 +60,9 @@ namespace BestDeal.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveFromShoppingCart(int artikalID)
+        public RedirectToActionResult BrisiKorpa(int artikalID)
         {
-            var odabrani = _artikliApp.odabraniArtikli.FirstOrDefault(p => p.IdArtikla == artikalID);
+            var odabrani = _artikliApp.artikliApp.FirstOrDefault(p => p.IdArtikla == artikalID);
             if (odabrani != null)
             {
                 _korpica.IzbaciIzKorpe(odabrani);

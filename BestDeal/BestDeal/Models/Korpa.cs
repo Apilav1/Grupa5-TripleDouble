@@ -22,7 +22,7 @@ namespace BestDeal.Models
         public Korpa()
         {
         }
-        string slikaKorpe;
+
         public Korpa(BestDealContext context)
         {
             _context = context;
@@ -40,11 +40,11 @@ namespace BestDeal.Models
                 .HttpContext.Session;
 
             var context = services.GetService<BestDealContext>();
-            string korpica = session.GetString("idKorpe") ?? Guid.NewGuid().ToString();
+            string cartId = session.GetString("idKorpe") ?? Guid.NewGuid().ToString();
 
-            session.SetString("idKorpe", korpica);
+            session.SetString("idKorpe", cartId);
 
-            return new Korpa(context) { idKorpe = korpica };
+            return new Korpa(context) { idKorpe = cartId };
         }
 
         public void DodajUKorpu(Artikal artikal, int kolicina)
@@ -57,18 +57,25 @@ namespace BestDeal.Models
             {
                 elementKorpe = new KorpaInfo
                 {
-                    idKorpe = idKorpe,
+                    IdKorpe1 = idKorpe,
                     A = artikal,
                 KolicinaArtikla = 1
             };
 
             _context.KorpaInfo.Add(elementKorpe);
-        }
+            }
             else
             {
                 elementKorpe.KolicinaArtikla++;
             }
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            finally
+            {
+                _context.Database.CloseConnection();
+            }
         }
 
         public int IzbaciIzKorpe(Artikal artikal)
@@ -77,14 +84,14 @@ namespace BestDeal.Models
                     _context.KorpaInfo.SingleOrDefault(
                         s => s.A.IdArtikla == artikal.IdArtikla && s.IdKorpe1 == IdKorpe);
 
-            var tempKolicina = 0;
+            var localAmount = 0;
 
             if (elementKorpe != null)
             {
                 if (elementKorpe.KolicinaArtikla > 1)
                 {
                     elementKorpe.KolicinaArtikla--;
-                    tempKolicina = elementKorpe.KolicinaArtikla;
+                    localAmount = elementKorpe.KolicinaArtikla;
                 }
                 else
                 {
@@ -94,7 +101,7 @@ namespace BestDeal.Models
 
             _context.SaveChanges();
 
-            return tempKolicina;
+            return localAmount;
         }
 
         public List<KorpaInfo> DajNaruceneArtikle()
@@ -106,13 +113,13 @@ namespace BestDeal.Models
                            .ToList());
         }
 
-        public void IsprazniKorpu()
+        public void ClearCart()
         {
-            var elementi = _context
+            var cartItems = _context
                 .KorpaInfo
                 .Where(cart => cart.IdKorpe1 == idKorpe);
 
-            _context.KorpaInfo.RemoveRange(elementi);
+            _context.KorpaInfo.RemoveRange(cartItems);
 
             _context.SaveChanges();
         }
@@ -129,9 +136,8 @@ namespace BestDeal.Models
         [Key]
         public string IdKorpe { get => idKorpe; set => idKorpe = value; }
         public List<KorpaInfo> ArtikliKolicina { get => artikliKolicina; set => artikliKolicina = value; }
-        public string SlikaKorpe { get => slikaKorpe; set => slikaKorpe = value; }
 
-        public void DodajArtikl(Artikal artikal, int kolicina)
+        public void DodajArtikla(Artikal artikal, int kolicina)
         {
             ArtikliKolicina.Add(new KorpaInfo(artikal, kolicina));
         }

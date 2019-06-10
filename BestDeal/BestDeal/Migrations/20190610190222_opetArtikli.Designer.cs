@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    [Migration("20190608210542_korpa")]
-    partial class korpa
+    [Migration("20190610190222_opetArtikli")]
+    partial class opetArtikli
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,7 @@ namespace BestDeal.Migrations
 
             modelBuilder.Entity("BestDeal.Models.Artikal", b =>
                 {
-                    b.Property<int>("IdArtikla")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("IdArtikla");
 
                     b.Property<double>("CijenaArtikla");
 
@@ -124,9 +122,7 @@ namespace BestDeal.Migrations
 
             modelBuilder.Entity("BestDeal.Models.Tip", b =>
                 {
-                    b.Property<int>("idTipa")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("idTipa");
 
                     b.Property<string>("Ime");
 
@@ -301,8 +297,6 @@ namespace BestDeal.Migrations
                     b.HasBaseType("BestDeal.Models.Korpa");
 
                     b.Property<int?>("AIdArtikla");
-
-                    b.Property<int>("IdKomponente");
 
                     b.Property<string>("IdKorpe1");
 
