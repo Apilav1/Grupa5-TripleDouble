@@ -98,7 +98,7 @@ namespace BestDeal
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -129,9 +129,6 @@ namespace BestDeal
                     defaults: new { Controller = "ArtikliApp", action = "List" });
             });
             // CreateRoles(serviceProvider);
-
-
-          
         }
 
     }

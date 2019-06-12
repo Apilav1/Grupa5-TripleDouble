@@ -9,30 +9,25 @@ using System.Threading.Tasks;
 
 namespace BestDeal.AdapteriPodataka
 {
-    public class ArtikalInit
+    public static class ModelBuilderExtensions
     {
-        public static void PopuniBazu(BestDealContext _context)
+        public static void PopuniBazu(this ModelBuilder modelBuilder)
         {
-            //BestDealContext _context = applicationBuilder.ApplicationServices.GetRequiredService<BestDealContext>();
-            if (!_context.Tip.Any())
-            {
-                //dodaj tipove
-            }
-            if (!_context.Artikal.Any())
-            {
-                _context.AddRange
+            modelBuilder.Entity<Artikal>().HasData
                     (
-                    new Artikal
-                    {
-                        NazivArtikla = "HP 250 G6",
-                        CijenaArtikla = 700,
-                        IdArtikla = 1,
-                        KratkiOpis = "Vrhunski laptop za prosječnog korisnika!",
-                        DetaljniOpis = "Povežite se sa cijenjenim HP 250 notebook računarima. Završajite poslovne zadatke sa Intel® tehnologijom, osnovnim alatima za saradnju koji su učitani na HP 250. Izdržljiva šasija pomaže zaštiti laptopa od strogosti dana.",
-                        URLMaleSlike1 = "https://static.toiimg.com/photo/60104728/HP-15-BS542TU-2EY84PA-Laptop-Core-i3-6th-Gen4-GB1-TBDOS.jpg",
-                        URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
-                        TipArtikla = paroviTip["Laptopi"]
-                    },
+                  new Artikal
+                  {
+                      NazivArtikla = "HP 250 G6",
+                      CijenaArtikla = 700,
+                      IdArtikla = 1,
+                      KratkiOpis = "Vrhunski laptop za prosječnog korisnika!",
+                      DetaljniOpis = "Povežite se sa cijenjenim HP 250 notebook računarima. Završajite poslovne zadatke sa Intel® tehnologijom, osnovnim alatima za saradnju koji su učitani na HP 250. Izdržljiva šasija pomaže zaštiti laptopa od strogosti dana.",
+                      URLMaleSlike1 = "https://static.toiimg.com/photo/60104728/HP-15-BS542TU-2EY84PA-Laptop-Core-i3-6th-Gen4-GB1-TBDOS.jpg",
+                      URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
+                      TipArtikla = paroviTip["Laptopi"],
+                      tipNaziv = "Laptopi"
+                      //da li treba eksplicitno tipNaziv
+                  }/*,
                     new Artikal
                     {
                         NazivArtikla = "LENOVO IdeaPad D330",
@@ -384,10 +379,9 @@ namespace BestDeal.AdapteriPodataka
                          URLMaleSlike1 = "https://m.media-amazon.com/images/I/81xeyiadbaL._AC_UL654_FMwebp_QL65_.jpg",
                          URLSlike1 = "https://m.media-amazon.com/images/I/81xeyiadbaL._AC_UL654_FMwebp_QL65_.jpg",
                          TipArtikla = paroviTip["Računarska oprema"]
-                     }
+                   }*/  
                     );
-            }
-            _context.SaveChanges();
+            
         }
               private static Dictionary<string, Tip> paroviTip;
         public static Dictionary<string, Tip> ParoviTip

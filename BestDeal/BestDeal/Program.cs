@@ -52,7 +52,7 @@ namespace BestDeal
                 try
                 {
                     var context = services.GetRequiredService<BestDealContext>();
-                    ArtikalInit.PopuniBazu(context);//<---Do your seeding here
+                    ArtikalInit.PopuniBazu(context);
                 }
                 catch (Exception ex)
                 {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BestDeal.AdapteriPodataka;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -44,6 +45,7 @@ namespace BestDeal.Models
        public DbSet<Korpa> Korpa { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<IdentityUser>().ToTable("IdentityUsers");
             modelBuilder.Entity<Korpa>().ToTable("Korpa");
             modelBuilder.Entity<KorpaInfo>().ToTable("KorpaInfo");
@@ -56,8 +58,8 @@ namespace BestDeal.Models
             modelBuilder.Entity<Tip>().ToTable("Tip");
             modelBuilder.Ignore<Tipovi>();
             modelBuilder.Entity<Artikal>().ToTable("Artikal");
-            Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
-            base.OnModelCreating(modelBuilder);
+           Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
+            ModelBuilderExtensions.PopuniBazu(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
