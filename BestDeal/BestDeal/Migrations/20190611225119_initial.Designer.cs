@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    [Migration("20190610190222_opetArtikli")]
-    partial class opetArtikli
+    [Migration("20190611225119_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,23 +23,25 @@ namespace BestDeal.Migrations
 
             modelBuilder.Entity("BestDeal.Models.Artikal", b =>
                 {
-                    b.Property<int>("IdArtikla");
+                    b.Property<int>("IdArtikla")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<double>("CijenaArtikla");
 
                     b.Property<string>("DetaljniOpis");
 
-                    b.Property<string>("KratkiOpis")
-                        .IsRequired();
+                    b.Property<string>("KratkiOpis");
 
-                    b.Property<string>("NazivArtikla")
-                        .IsRequired();
+                    b.Property<string>("NazivArtikla");
 
-                    b.Property<int>("TipArtiklaidTipa");
+                    b.Property<int?>("TipArtiklaidTipa");
 
                     b.Property<string>("URLMaleSlike1");
 
                     b.Property<string>("URLSlike1");
+
+                    b.Property<string>("tipNaziv");
 
                     b.HasKey("IdArtikla");
 
@@ -55,8 +57,6 @@ namespace BestDeal.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
-
-                    b.Property<string>("SlikaKorpe");
 
                     b.HasKey("IdKorpe");
 
@@ -335,8 +335,7 @@ namespace BestDeal.Migrations
                 {
                     b.HasOne("BestDeal.Models.Tip", "TipArtikla")
                         .WithMany()
-                        .HasForeignKey("TipArtiklaidTipa")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TipArtiklaidTipa");
                 });
 
             modelBuilder.Entity("BestDeal.Models.Narudzba", b =>

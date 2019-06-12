@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190611221152_tstt.cs" />
+    <Compile Remove="Migrations\20190611221152_tstt.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\slike\best-deal.jpg" />
   </ItemGroup>
 

@@ -20,13 +20,14 @@ namespace BestDeal.Models
 
         public BestDealContext(DbContextOptions<BestDealContext> options) : base(options)
         {
-          /*  if (!_migrated[0])
-                lock (_migrated)
-                    if (!_migrated[0])
-                    {
-                        Database.Migrate(); // apply all migrations
-                        _migrated[0] = true;
-                    }*/
+            /*  if (!_migrated[0])
+                  lock (_migrated)
+                      if (!_migrated[0])
+                      {
+                          Database.Migrate(); // apply all migrations
+                          _migrated[0] = true;
+                      }*/
+            Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
         }
         public DbSet<IdentityUser> IdentityUser { get; set; }
 
@@ -55,10 +56,13 @@ namespace BestDeal.Models
             modelBuilder.Entity<Tip>().ToTable("Tip");
             modelBuilder.Ignore<Tipovi>();
             modelBuilder.Entity<Artikal>().ToTable("Artikal");
+            Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
+
+        
     }
 }

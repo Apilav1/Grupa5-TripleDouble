@@ -1,7 +1,7 @@
 ﻿@model BestDeal.Models.Artikal
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "AddOrEdit";
 }
 
 <h1>Create</h1>
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AddOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CijenaArtikla" class="control-label"></label>
@@ -43,6 +43,11 @@
                 <span asp-validation-for="URLMaleSlike1" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="tipNaziv" class="control-label"></label>
+                <input asp-for="tipNaziv" class="form-control" />
+                <span asp-validation-for="tipNaziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -51,25 +56,20 @@
 
         @*<label asp-for="IDProduktgruppe" class="control-label"></label>
 
-            <input asp-for="IDProduktgruppe" class="form-control" />
+        <input asp-for="IDProduktgruppe" class="form-control" />
 
-            <span asp-validation-for="IDProduktgruppe" class="text-danger"></span>*@
-
-
+        <span asp-validation-for="IDProduktgruppe" class="text-danger"></span>*@
 
 
 
-        <label asp-for="TipArtikla" class="control-label"></label>
-        <select asp-for="TipArtikla"
-                asp-items="@(new SelectList(ViewBag.tipovi, "Ime"))"></select>
+        
 
 
 
     </div>
 </div>
-<label asp-for="TipArtikla" class="control-label"></label>
-<select asp-for="TipArtikla"
-        asp-items="@(new SelectList(ViewBag.tipovi, "Ime"))"></select>
+
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

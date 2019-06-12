@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BestDeal.Models;
+using System.Diagnostics;
 
 namespace BestDeal.Controllers
 {
@@ -43,9 +44,9 @@ namespace BestDeal.Controllers
         }
 
         // GET: Artikli/Create
-        public IActionResult Create()
+        public IActionResult AddOrEdit(int id=111)
         {
-            return View();
+            return View(new Artikal());
         }
 
         // POST: Artikli/Create
@@ -53,13 +54,34 @@ namespace BestDeal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CijenaArtikla,IdArtikla,NazivArtikla,KratkiOpis,DetaljniOpis,URLSlike1,URLMaleSlike1")] Artikal artikal)
+        public async Task<IActionResult> AddOrEdit([Bind("CijenaArtikla,NazivArtikla,KratkiOpis,DetaljniOpis,URLSlike1,URLMaleSlike1, tipNaziv")] Artikal artikal)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(artikal);
-                await _context.SaveChangesAsync();
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+              
+                    _context.Add(artikal);
+                    _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT dbo.Artikal ON");
+                    _context.SaveChanges();
+                    _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT dbo.Artikal OFF");
+
+                    transaction.Commit();
+                }
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+               
+                var errors = ModelState.Select(x => x.Value.Errors)
+                           .Where(y => y.Count > 0)
+                           .ToList();
+
+                Debug.WriteLine("not valid");
+                foreach (object o in errors)
+                    Debug.WriteLine(o.ToString());
+                Debug.WriteLine("not valid");
             }
             return View(artikal);
         }
