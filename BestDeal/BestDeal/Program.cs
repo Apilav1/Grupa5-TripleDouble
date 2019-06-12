@@ -14,6 +14,9 @@ using Microsoft.IdentityModel.Protocols;
 using System.Data.SqlClient;
 using System.Text;
 using System.Diagnostics;
+using BestDeal.AdapteriPodataka;
+using BestDeal.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BestDeal
 {
@@ -31,13 +34,35 @@ namespace BestDeal
             set;
         }
 
-        public static void Main(string[] args)
+      /*  public static void Main(string[] args)
         {
             lastArtikalId = getLastArtikalId();
             lastTipId = getLastTipId();
             CreateWebHostBuilder(args).Build().Run();
-        }
+        }*/
+        public static void Main(string[] args)
+        {
+            lastArtikalId = getLastArtikalId();
+            lastTipId = getLastTipId();
+            var host = CreateWebHostBuilder(args).Build();
 
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<BestDealContext>();
+                    ArtikalInit.PopuniBazu(context);//<---Do your seeding here
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
+
+            host.Run();
+        }
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();

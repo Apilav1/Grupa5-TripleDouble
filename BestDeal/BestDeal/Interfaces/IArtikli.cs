@@ -8,8 +8,7 @@ namespace BestDeal
 {
     public interface IArtikli
     {
-        IEnumerable<Artikal> artikliApp { get; set; }
-        IEnumerable<Artikal> odabraniArtikli { get;  }
+        IEnumerable<Artikal> artikliApp { get; }
         Artikal dajArtikalPoID(int idArtikla);
     }
 }

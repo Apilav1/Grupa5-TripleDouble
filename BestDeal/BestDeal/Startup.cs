@@ -128,7 +128,11 @@ namespace BestDeal
                     template: "ArtikliApp/{action}/{category?}",
                     defaults: new { Controller = "ArtikliApp", action = "List" });
             });
-           // CreateRoles(serviceProvider);
+            // CreateRoles(serviceProvider);
+
+
+          
         }
+
     }
 }
