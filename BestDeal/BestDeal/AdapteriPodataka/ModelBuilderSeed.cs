@@ -24,7 +24,7 @@ namespace BestDeal.AdapteriPodataka
                       DetaljniOpis = "Povežite se sa cijenjenim HP 250 notebook računarima. Završajite poslovne zadatke sa Intel® tehnologijom, osnovnim alatima za saradnju koji su učitani na HP 250. Izdržljiva šasija pomaže zaštiti laptopa od strogosti dana.",
                       URLMaleSlike1 = "https://static.toiimg.com/photo/60104728/HP-15-BS542TU-2EY84PA-Laptop-Core-i3-6th-Gen4-GB1-TBDOS.jpg",
                       URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
-                      TipArtikla = paroviTip["Laptopi"],
+                      TipArtikla = ParoviTip["Laptopi"],
                       tipNaziv = "Laptopi"
                       //da li treba eksplicitno tipNaziv
                   }/*,
@@ -380,26 +380,23 @@ namespace BestDeal.AdapteriPodataka
                          URLSlike1 = "https://m.media-amazon.com/images/I/81xeyiadbaL._AC_UL654_FMwebp_QL65_.jpg",
                          TipArtikla = paroviTip["Računarska oprema"]
                    }*/  
-                    );
+                    );;
             
         }
-              private static Dictionary<string, Tip> paroviTip;
+              private static Dictionary<string, Tip> paroviTip = new Dictionary<string, Tip>();
         public static Dictionary<string, Tip> ParoviTip
         {
             get
             {
-                if (paroviTip == null)
+                if (paroviTip.Count==0)
                 {
                     var listaTipova = new Tip[]
                     {
-                      new Tip { Ime = "Laptopi", idTipa = 1 },
+                    new Tip { Ime = "Laptopi", idTipa = 1 },
                     new Tip { Ime = "Mobiteli", idTipa = 2 },
                     new Tip { Ime = "Računari", idTipa = 3 },
                     new Tip { Ime = "Računarska oprema", idTipa = 4 }
                     };
-
-                    paroviTip = new Dictionary<string, Tip>();
-
                     foreach (Tip tipcic in listaTipova)
                     {
                         paroviTip.Add(tipcic.Ime, tipcic);

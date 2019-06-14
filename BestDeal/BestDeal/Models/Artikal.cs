@@ -42,7 +42,7 @@ namespace BestDeal.Models
         {
             CijenaArtikla = cijenaArtikla;
             this.idArtikla = idArtikla;
-            idArtikla = Program.lastArtikalId;
+           idArtikla = Program.lastArtikalId;
             Program.lastArtikalId++;
         }
         String tippp;
@@ -56,11 +56,11 @@ namespace BestDeal.Models
             {
             
                 tippp = value;
-                Tip tip = new Tip();
+              /*  Tip tip = new Tip();
                 tip.Ime = value;
                 Program.lastTipId++;
                 tip.idTipa = Program.lastTipId;
-                TipArtikla = tip;
+                TipArtikla = tip;*/
             }
             }
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala
@@ -76,6 +76,8 @@ namespace BestDeal.Models
                     if (t.Equals(value)) tipArtikla = value;
                     else
                     {
+                       /* Program.lastTipId++;
+                        tipArtikla.idTipa = Program.lastTipId;*/
                         tipArtikla = value;
                         //ako je dodan tip koji ne postoji u listi tipova, automatski se azurira ta lista
                         Tipovi.getInstance().ListaTipova.Add(value);

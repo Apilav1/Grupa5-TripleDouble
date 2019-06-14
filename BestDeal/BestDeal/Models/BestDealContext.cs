@@ -28,7 +28,7 @@ namespace BestDeal.Models
                           Database.Migrate(); // apply all migrations
                           _migrated[0] = true;
                       }*/
-            Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
+           // Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
         }
         public DbSet<IdentityUser> IdentityUser { get; set; }
 
@@ -57,8 +57,8 @@ namespace BestDeal.Models
             modelBuilder.Ignore<StanjeNarudzbe>();
             modelBuilder.Entity<Tip>().ToTable("Tip");
             modelBuilder.Ignore<Tipovi>();
+            //Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
             modelBuilder.Entity<Artikal>().ToTable("Artikal");
-           Database.ExecuteSqlCommand("SET IDENTITY_INSERT Artikal ON");
             ModelBuilderExtensions.PopuniBazu(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
