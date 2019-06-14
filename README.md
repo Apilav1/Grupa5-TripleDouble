@@ -4,7 +4,8 @@
 
 ## Tema: BestDeal
 [![Sliba](https://thumbs.gfycat.com/BasicLoneAntelope-size_restricted.gif)]
-### http://bit.do/BestDealOOAD
+### Stranica aplikacije: http://bit.do/BestDealOOAD
+### Video prezentacija: https://youtu.be/dV3F8oNGxrU
 #### Članovi tima
 1.  Adi Pilav
 2. Mirza Šehalić
