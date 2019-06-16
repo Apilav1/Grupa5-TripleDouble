@@ -70,7 +70,7 @@ namespace BestDeal.Models
             }
             try
             {
-                _context.SaveChanges();
+                _context.SaveChangesAsync();
             }
             finally
             {
@@ -99,7 +99,7 @@ namespace BestDeal.Models
                 }
             }
 
-            _context.SaveChanges();
+             _context.SaveChangesAsync();
 
             return localAmount;
         }
@@ -121,7 +121,7 @@ namespace BestDeal.Models
 
             _context.KorpaInfo.RemoveRange(cartItems);
 
-            _context.SaveChanges();
+             _context.SaveChanges();
         }
 
         public decimal DajUkupnuCijenu()

@@ -17,6 +17,7 @@ using BestDeal.Models;
 using Microsoft.Extensions.Options;
 using BestDeal.AdapteriPodataka;
 using BestDeal.Interfaces;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace BestDeal
 {

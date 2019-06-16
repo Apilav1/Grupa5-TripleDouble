@@ -40,16 +40,16 @@
 
     <div class="text-right">
         <div class="btn-group ">
-            <a class="btn btn-success" asp-controller="Narudzba" asp-action="Checkout">Plaćanje</a>
+            <a class="btn btn-success" asp-controller="NarudzbaApp" asp-action="Placanje">Plaćanje</a>
             <a class="btn-group">
                 <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Dodaj još artikala u korpu<span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-category="Laptopi">Laptopi</a></li>
-                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-category="Mobiteli">Mobiteli</a></li>
-                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-category="Računari">Računari</a></li>
-                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-category="Računarska oprema">Računarska oprema</a></li>
+                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-tip="Laptopi">Laptopi</a></li>
+                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-tip="Mobiteli">Mobiteli</a></li>
+                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-tip="Računari">Računari</a></li>
+                    <li><a asp-controller="ArtikliApp" asp-action="List" asp-route-tip="Računarska oprema">Računarska oprema</a></li>
                 </ul>
             </a>
         </div>

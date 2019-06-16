@@ -10,15 +10,27 @@
             </h3>
             <p>@Model.KratkiOpis</p>
         </div>
-        <div class="addToCart text-right">
-            <p class="button ">
-                <a class="btn btn-success" id="cartButton" 
-                   asp-controller="KorpaApp"
-                   asp-action="DodajKorpa" 
-                   asp-route-artikalID="@Model.IdArtikla">
-                    Dodaj u korpu!
-                </a>
-            </p>
+        <div>
+            <!-- Ovdje koristimo dobar fol Razor sintakse za spajanje HTML i C# stringova tako da svaki artikal ima zaseban event za prikazivanje detaljnijeg opisa. Bez ovoga bi se klikom na dugme otvarali detaljni opisi SVIH artikala -->
+            <a class="btn btn-primary" data-toggle="collapse" href="#@("sakrijOpis"+ Model.IdArtikla)" role="button" aria-expanded="false"
+               aria-controls="multiCollapseExample1">Prikaži detaljni opis</a>
+        </div>
+            <div class="col text-left">
+                <div class="collapse multi-collapse" id="@("sakrijOpis"+ Model.IdArtikla)">
+                    <div class="card card-body">
+                        @Model.DetaljniOpis
+                    </div>
+                </div>
+            </div>
+            <div class="addToCart text-right">
+                <p class="button ">
+                    <a class="btn btn-success" id="cartButton"
+                       asp-controller="KorpaApp"
+                       asp-action="DodajKorpa"
+                       asp-route-artikalID="@Model.IdArtikla">
+                        Dodaj u korpu!
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
-</div>

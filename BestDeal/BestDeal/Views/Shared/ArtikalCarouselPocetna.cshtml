@@ -9,7 +9,10 @@
                         <p class="card-text">
                             @Model.KratkiOpis
                         </p>
-                        <a class="btn btn-primary btn-md btn-rounded">Kupi!</a>
+                        <a class="btn btn-primary btn-md btn-rounded" 
+                           asp-controller="KorpaApp"
+                       asp-action="DodajKorpa"
+                       asp-route-artikalID="@Model.IdArtikla">Kupi!</a>
                     </div>
                 </div>
             </div>
