@@ -18,7 +18,13 @@
             <div class="col text-left">
                 <div class="collapse multi-collapse" id="@("sakrijOpis"+ Model.IdArtikla)">
                     <div class="card card-body">
-                        @Model.DetaljniOpis
+                        <style>
+                            .line-breaks {
+                                white-space: pre-line;
+                            }
+                        </style>
+
+                        <span class="line-breaks">@Model.DetaljniOpis</span>
                     </div>
                 </div>
             </div>
