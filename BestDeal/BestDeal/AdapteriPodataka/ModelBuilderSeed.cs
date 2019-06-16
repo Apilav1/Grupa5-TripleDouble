@@ -52,7 +52,7 @@ namespace BestDeal.AdapteriPodataka
                         CijenaArtikla = 2250.0,
                         IdArtikla = 3,
                         KratkiOpis = "Vrhunski laptop za one koji žele više!",
-                        DetaljniOpis = "1.6GHz dual‑core 8th‑generation Intel Core i5 processor Turbo Boost up to 3.6GHz/n Retina display 13.3-inch (diagonal) LED-backlit display with IPS technology; 2560 - by - 1600 native resolution at 227 pixels per inch with support for millions of colors/n 8GB 2133MHz LPDDR3 memory/n 128GB SSD storage/n Intel UHD Graphics 617 Touch ID/n Force Touch trackpad/n Two Thunderbolt 3 ports/n Backlit Keyboard - US English",
+                        DetaljniOpis = "1.6GHz dual‑core 8th‑generation Intel Core i5 processor Turbo Boost up to 3.6GHz"+"<br>"+ "Retina display 13.3-inch (diagonal) LED-backlit display with IPS technology; 2560 - by - 1600 native resolution at 227 pixels per inch with support for millions of colors" + "<br>" + " 8GB 2133MHz LPDDR3 memory" + "<br>" + " 128GB SSD storage" + "<br>" + " Intel UHD Graphics 617 Touch ID" + "<br>" + " Force Touch trackpad" + "<br>" + " Two Thunderbolt 3 ports, Backlit Keyboard - US English",
                         URLMaleSlike1 = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5998/5998800_sd.jpg",
                         URLSlike1 = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5998/5998800_sd.jpg",
                         TipArtiklaidTipa = paroviTip["Laptopi"].idTipa
@@ -63,7 +63,7 @@ namespace BestDeal.AdapteriPodataka
                         CijenaArtikla = 1500.0,
                         IdArtikla = 4,
                         KratkiOpis = "Laptop koji će ispuniti svakodnevne zahtjeve njihovih korisnika!",
-                        DetaljniOpis = "Procesor: Intel Core i5-7200 na 2.5GHz /n RAM: 8GB DDR3 /n SSD: 256GB /n Grafika: Intel HD Graphics 620 /n Display: 14\"FHD IPS LED",
+                        DetaljniOpis = "Procesor: Intel Core i5-7200 na 2.5GHz " + "<br>" + " RAM: 8GB DDR3 " + "<br>" + " SSD: 256GB " + "<br>" + " Grafika: Intel HD Graphics 620 " + "<br>" + " Display: 14\"FHD IPS LED",
                         URLMaleSlike1 = "https://www.notebookcheck.net/fileadmin/Notebooks/Acer/Swift_5_SF515-51T-70UX/4zu3_Acer_Swift_5_SF515_51T.jpg",
                         URLSlike1 = "https://www.notebookcheck.net/fileadmin/Notebooks/Acer/Swift_5_SF515-51T-70UX/4zu3_Acer_Swift_5_SF515_51T.jpg",
                         TipArtiklaidTipa = paroviTip["Laptopi"].idTipa
@@ -74,7 +74,7 @@ namespace BestDeal.AdapteriPodataka
                         CijenaArtikla = 1800.0,
                         IdArtikla = 5,
                         KratkiOpis = "Entry level gaming laptop!",
-                        DetaljniOpis = "CPU Intel Core i7 8550U (1.80 GHz up to 4.00 GHz) 8MB /n Radna memorija DDR4 8GB/n HDD SSD 256GB /n VGA Nvidia GTX1050 4GB DDR5 128 bita /n Ekran 15.6 LED full HD (1920x1080) /n Webcam, wifi, BT, HDMI, USB 3.0 x 2 /n USB-C, LAN, cardreader, osvjetljena tastatura /n Windows 10 Pro licenca 64 bita",
+                        DetaljniOpis = "CPU Intel Core i7 8550U (1.80 GHz up to 4.00 GHz) 8MB " + "<br>" + " Radna memorija DDR4 8GB" + "<br>" + " HDD SSD 256GB " + "<br>" + " VGA Nvidia GTX1050 4GB DDR5 128 bita " + "<br>" + " Ekran 15.6 LED full HD (1920x1080) " + "<br>" + " Webcam, wifi, BT, HDMI, USB 3.0 x 2 " + "<br>" + " USB-C, LAN, cardreader, osvjetljena tastatura " + "<br>" + " Windows 10 Pro licenca 64 bita",
                         URLMaleSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81Lr70XWFWL._SX425_.jpg",
                         URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81Lr70XWFWL._SX425_.jpg",
                         TipArtiklaidTipa = paroviTip["Laptopi"].idTipa
@@ -85,7 +85,7 @@ namespace BestDeal.AdapteriPodataka
                         CijenaArtikla = 700.0,
                         IdArtikla = 6,
                         KratkiOpis = "Laptop namijenjen za svakodnevne potrebe!",
-                        DetaljniOpis = "15,6 inch HD (1366×768) AG /n Pentium N5000 ( 4M, up to 2.7GHz) /n 4GB DD4 /n 1TB HDD (5400 rpm) /n DVD RW /n Intel UHD Graphics /n  4-Cell Batt (40Whr) /n Ubunt Linux 16.04, Ultra Blue",
+                        DetaljniOpis = "15,6 inch HD (1366×768) AG " + "<br>" + " Pentium N5000 ( 4M, up to 2.7GHz) " + "<br>" + " 4GB DD4 " + "<br>" + " 1TB HDD (5400 rpm) " + "<br>" + " DVD RW " + "<br>" + " Intel UHD Graphics " + "<br>" + "  4-Cell Batt (40Whr) " + "<br>" + " Ubunt Linux 16.04, Ultra Blue",
                         URLMaleSlike1 = "https://www.procomp.ba/17980-large_default/dell-inspiron-15-3582.jpg",
                         URLSlike1 = "https://www.procomp.ba/17980-large_default/dell-inspiron-15-3582.jpg",
                         TipArtiklaidTipa = paroviTip["Laptopi"].idTipa
@@ -106,8 +106,8 @@ namespace BestDeal.AdapteriPodataka
                         NazivArtikla = "ASUS UX580GD-BO009R",
                         CijenaArtikla = 3000.0,
                         IdArtikla = 8,
-                        KratkiOpis = "Laptop koji će učiniti svaki zadatak da se sa lahkoćom riješi!",
-                        DetaljniOpis = "Procesor: Intel Core i7 8750H 2.2 GHz (6 Cores) /n Memorija (RAM): 16 GB DDR4 /n Hard disk: 512 GB, SSD /n Grafička: Nvidia GeForce GTX 1050 /n Mreža: Wireless, LAN /n Ostalo: Card Reader, HDMI, USB3.1 , VGA ,Fingerprint",
+                        KratkiOpis = "Laptop koji će nastaviti oduševljavati i nakon nekoliko godina!",
+                        DetaljniOpis = "Procesor: Intel Core i7 8750H 2.2 GHz (6 Cores) " + "<br>" + " Memorija (RAM): 16 GB DDR4 " + "<br>" + " Hard disk: 512 GB, SSD " + "<br>" + " Grafička: Nvidia GeForce GTX 1050 " + "<br>" + " Mreža: Wireless, LAN " + "<br>" + " Ostalo: Card Reader, HDMI, USB3.1 , VGA ,Fingerprint",
                         URLMaleSlike1 = "https://www.comtradeshop.com/img/products/2018-08-31/asus-zenbook-pro-ux580gd-bo009r-laptop-15-6-quot-full-hd-ips-intel-hexa-core-i7-8750h-16gb-512gb-ssd-nvme-geforce-gtx1050-4gb-gddr5-win10-pro_IGYtV_3.jpg",
                         URLSlike1 = "https://www.comtradeshop.com/img/products/2018-08-31/asus-zenbook-pro-ux580gd-bo009r-laptop-15-6-quot-full-hd-ips-intel-hexa-core-i7-8750h-16gb-512gb-ssd-nvme-geforce-gtx1050-4gb-gddr5-win10-pro_IGYtV_3.jpg",
                         TipArtiklaidTipa = paroviTip["Laptopi"].idTipa
@@ -118,7 +118,7 @@ namespace BestDeal.AdapteriPodataka
                         CijenaArtikla = 8000.0,
                         IdArtikla = 9,
                         KratkiOpis = "Laptop koji je u stanju podržati sve TripleA naslove igrica na maksimalnoj grafici!",
-                        DetaljniOpis = "Model procesora: i9-8950HK 2.90GHZ, 8 jezgri /n RAM: 32 GB /n SSD kapacitet (GB): 1500GB SSD /n Proizvođač graf. kartice: NVIDIA RTX 2080 /n Rezolucija: 1920x1080 144Hz refresh rate",
+                        DetaljniOpis = "Model procesora: i9-8950HK 2.90GHZ, 8 jezgri " + "<br>" + " RAM: 32 GB " + "<br>" + " SSD kapacitet (GB): 1500GB SSD " + "<br>" + " Proizvođač graf. kartice: NVIDIA RTX 2080 " + "<br>" + " Rezolucija: 1920x1080 144Hz refresh rate",
                         URLMaleSlike1 = "https://c1.neweggimages.com/NeweggImage/ProductImage/34-235-121-V30.jpg",
                         URLSlike1 = "https://c1.neweggimages.com/NeweggImage/ProductImage/34-235-121-V30.jpg",
                         TipArtiklaidTipa = paroviTip["Laptopi"].idTipa
@@ -129,7 +129,7 @@ namespace BestDeal.AdapteriPodataka
                         CijenaArtikla = 1350.0,
                         IdArtikla = 10,
                         KratkiOpis = "Sljedeća generacija galaxy uređaja!",
-                        DetaljniOpis = "Rezolucija: 6.4 inches 1440x3040 pixels, 19:9 ratio (~522 ppi density) /n OS: Android 9.0 (Pie) /n Procesor: Exynos 9820 (8nm) /n GPU: Mali-G76 MP12 /n Card slot: microSD, up to 1 TB (uses shared SIM slot) - dual SIM model only /n Internal: 1 TB, 12 GB RAM, 128/512 GB, 8 GB RAM /n Glavna kamera: Triple sensor(12MP, 12MP, 16MP) /n Prednja kamera: Dual (10MP, 8MP) /n Baterija: 4100mAh",
+                        DetaljniOpis = "Rezolucija: 6.4 inches 1440x3040 pixels, 19:9 ratio (~522 ppi density) " + "<br>" + " OS: Android 9.0 (Pie) " + "<br>" + " Procesor: Exynos 9820 (8nm) " + "<br>" + " GPU: Mali-G76 MP12 " + "<br>" + " Card slot: microSD, up to 1 TB (uses shared SIM slot) - dual SIM model only " + "<br>" + " Internal: 1 TB, 12 GB RAM, 128/512 GB, 8 GB RAM " + "<br>" + " Glavna kamera: Triple sensor(12MP, 12MP, 16MP) " + "<br>" + " Prednja kamera: Dual (10MP, 8MP) " + "<br>" + " Baterija: 4100mAh",
                         URLMaleSlike1 = "https://cdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s10-plus-new.jpg",
                         URLSlike1 = "https://cdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s10-plus-new.jpg",
                         TipArtiklaidTipa = paroviTip["Mobiteli"].idTipa
