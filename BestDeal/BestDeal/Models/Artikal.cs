@@ -32,18 +32,18 @@ namespace BestDeal.Models
 
         public Artikal()
         {
-            id++;
+           /* id++;
             Debug.WriteLine("dodijelio id {0}", Program.lastArtikalId);
             idArtikla = Program.lastArtikalId;
-            Program.lastArtikalId++;
+            Program.lastArtikalId++;*/
         }
 
         public Artikal(double cijenaArtikla, int idArtikla)
         {
             CijenaArtikla = cijenaArtikla;
             this.idArtikla = idArtikla;
-           idArtikla = Program.lastArtikalId;
-            Program.lastArtikalId++;
+          /* idArtikla = Program.lastArtikalId;
+            Program.lastArtikalId++;*/
         }
         String tippp;
         [System.ComponentModel.DisplayName("Naziv tipa artikla")]
@@ -71,17 +71,19 @@ namespace BestDeal.Models
             get => tipArtikla;
             set
             {
-                //ako postoji tip ne treba dodavati novi
+                /*
+                  //ako postoji tip ne treba dodavati novi
                 foreach (Tip t in Tipovi.getInstance().ListaTipova.ToList())
                     if (t.Equals(value)) tipArtikla = value;
                     else
                     {
-                       /* Program.lastTipId++;
-                        tipArtikla.idTipa = Program.lastTipId;*/
-                        tipArtikla = value;
-                        //ako je dodan tip koji ne postoji u listi tipova, automatski se azurira ta lista
-                        Tipovi.getInstance().ListaTipova.Add(value);
-                    }
+                       // Program.lastTipId++;
+                      //  tipArtikla.idTipa = Program.lastTipId;
+                tipArtikla = value;
+                //ako je dodan tip koji ne postoji u listi tipova, automatski se azurira ta lista
+                Tipovi.getInstance().ListaTipova.Add(value);
+            }*/
+            tipArtikla = value;
             }
         }
         [Required(ErrorMessage ="This field is required.")]

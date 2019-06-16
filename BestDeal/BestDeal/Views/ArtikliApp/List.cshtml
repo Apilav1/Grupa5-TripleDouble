@@ -6,7 +6,7 @@
 
     <div class="row">
         @{
-            foreach (Artikal artikal in Model.artikli.ToList())
+            foreach (Artikal artikal in Model.artikli)
             {
                 @await Html.PartialAsync("ArtikalPregled", artikal)
             }
