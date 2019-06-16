@@ -19,6 +19,7 @@ namespace BestDeal.Models
             Ime = ime;
         }
 
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int idTipa { get; set; }
