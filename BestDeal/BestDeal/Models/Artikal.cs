@@ -32,10 +32,10 @@ namespace BestDeal.Models
 
         public Artikal()
         {
-           /* id++;
-            Debug.WriteLine("dodijelio id {0}", Program.lastArtikalId);
-            idArtikla = Program.lastArtikalId;
-            Program.lastArtikalId++;*/
+            /* id++;
+             Debug.WriteLine("dodijelio id {0}", Program.lastArtikalId);
+             idArtikla = Program.lastArtikalId;
+             Program.lastArtikalId++;*/
         }
 
         public Artikal(double cijenaArtikla, int idArtikla)
@@ -111,24 +111,25 @@ namespace BestDeal.Models
         [Required(ErrorMessage = "This field is required.")]
         [System.ComponentModel.DisplayName("URL male slike")]
         public string URLMaleSlike1 { get => URLMaleSlike; set => URLMaleSlike = value; }
+        public List<Recenzija> Recenzije { get => recenzije; set => recenzije = value; }
 
         public void DodajRecenziju(string tekstRecenzije, double ocjenaArtikla)
         {
-            recenzije.Add(new Recenzija(tekstRecenzije, OcjenaArtikla));
+            Recenzije.Add(new Recenzija(tekstRecenzije, OcjenaArtikla));
      
             IzracunajOcjenu();
         }
 
-        void IzracunajOcjenu()
+       public void IzracunajOcjenu()
         {
             double suma = 0.0;
 
-            foreach (Recenzija recenzija in recenzije)
+            foreach (Recenzija recenzija in Recenzije)
             {
                 suma += recenzija.OverallRating;
             }
 
-            ocjenaArtikla = suma / recenzije.Count;
+            ocjenaArtikla = suma / Recenzije.Count;
         }
       
 

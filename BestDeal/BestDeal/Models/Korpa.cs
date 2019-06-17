@@ -70,7 +70,7 @@ namespace BestDeal.Models
             }
             try
             {
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             finally
             {

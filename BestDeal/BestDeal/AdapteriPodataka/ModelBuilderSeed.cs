@@ -13,6 +13,22 @@ namespace BestDeal.AdapteriPodataka
     {
         public static void PopuniBazu(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Recenzija>().HasData
+                (
+                new Recenzija {
+                    IdRecenzije =1,
+                    IdArtikla = 1,
+                    OverallRating = 1,
+                    TekstRecenzije = "Ne valja nista artikal"
+                },
+                 new Recenzija
+                 {
+                     IdRecenzije = 1,
+                     IdArtikla = 1,
+                     OverallRating = 2,
+                     TekstRecenzije = "Ne valja nista artikal vala"
+                 }
+                );
             modelBuilder.Entity<Tip>().HasData
                    (
                  new Tip { Ime = "Laptopi", idTipa = 1 },

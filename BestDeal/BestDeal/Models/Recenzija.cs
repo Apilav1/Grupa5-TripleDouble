@@ -31,6 +31,8 @@ namespace BestDeal.Models
         public double OverallRating { get => overallRating; set => overallRating = value; }
         [Key]
         public int IdRecenzije { get => idRecenzije; set => idRecenzije = value; }
+        public int IdArtikla { get => idArtikla; set => idArtikla = value; }
+        public string TekstRecenzije { get => tekstRecenzije; set => tekstRecenzije = value; }
 
         // public Recenzija(string tekstRecenzije, double ocjenaArtikla, List<Tuple<int, double>> specificneOcjene)
 
@@ -40,7 +42,7 @@ namespace BestDeal.Models
 
         public Recenzija(string tekstRecenzije2, double overallRating)
         {
-            tekstRecenzije = tekstRecenzije2;
+            TekstRecenzije = tekstRecenzije2;
             OverallRating = overallRating;
         }
 

@@ -86,6 +86,7 @@ namespace BestDeal
                 .AddDefaultTokenProviders();
             services.AddTransient<IArtikli, ArtikalKreator>();
             services.AddTransient<ITipovi, TipKreator>();
+            services.AddTransient<IRecenzije, RecenzijaKreator>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => Korpa.DajKorpu(sp));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
