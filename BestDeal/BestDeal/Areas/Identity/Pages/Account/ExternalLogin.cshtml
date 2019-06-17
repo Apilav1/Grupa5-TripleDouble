@@ -1,17 +1,16 @@
 ﻿@page
 @model ExternalLoginModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registracija";
 }
 
 <h1>@ViewData["Title"]</h1>
-<h4>Associate your @Model.LoginProvider account.</h4>
+<h4>Povežite Vaš @Model.LoginProvider račun.</h4>
 <hr />
 
 <p class="text-info">
-    You've successfully authenticated with <strong>@Model.LoginProvider</strong>.
-    Please enter an email address for this site below and click the Register button to finish
-    logging in.
+    Uspješno ste se povezali sa <strong>@Model.LoginProvider</strong>.
+    Molimo unesite email za ovaj sajt ispod i kliknite Registriraj dugme da bi završili prijavu.
 </p>
 
 <div class="row">
@@ -23,7 +22,7 @@
                 <input asp-for="Input.Email" class="form-control" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Registriraj</button>
         </form>
     </div>
 </div>
