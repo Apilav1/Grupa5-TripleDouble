@@ -36,8 +36,8 @@ namespace BestDeal.Areas.Identity.Pages.Account
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Potvrdi lozinku")]
+            [Compare("Password", ErrorMessage = "Lozinka i potvrda lozinke se ne slažu.")]
             public string ConfirmPassword { get; set; }
 
             public string Code { get; set; }
