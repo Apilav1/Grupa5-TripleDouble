@@ -19,14 +19,112 @@ namespace BestDeal.AdapteriPodataka
                     IdRecenzije =1,
                     IdArtikla = 1,
                     OverallRating = 1,
-                    TekstRecenzije = "Ne valja nista artikal"
+                    TekstRecenzije = "Ne valja ništa artikal"
                 },
                  new Recenzija
                  {
-                     IdRecenzije = 1,
+                     IdRecenzije = 2,
                      IdArtikla = 1,
                      OverallRating = 2,
-                     TekstRecenzije = "Ne valja nista artikal vala"
+                     TekstRecenzije = "Ne valja ništa artikal vala"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 3,
+                     IdArtikla = 2,
+                     OverallRating = 3,
+                     TekstRecenzije = "Nije loš, ali mu baterija kratko traje"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 4,
+                     IdArtikla = 2,
+                     OverallRating = 4,
+                     TekstRecenzije = "Uglavnom sam zadovoljan,međutim malo memorije dolazi uz njega"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 5,
+                     IdArtikla = 3,
+                     OverallRating = 3,
+                     TekstRecenzije = "Prevelika cijena u odnosu na performanse"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 6,
+                     IdArtikla = 5,
+                     OverallRating = 4,
+                     TekstRecenzije = "Prilicno dobar laptop, sve igrica vrti na visokoj kvaliteti"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 7,
+                     IdArtikla = 2,
+                     OverallRating = 2,
+                     TekstRecenzije = "Nije ispunilo moja očekivanja"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 8,
+                     IdArtikla = 6,
+                     OverallRating = 5,
+                     TekstRecenzije = "Ma vrh, šta drugo reći"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 9,
+                     IdArtikla = 3,
+                     OverallRating = 1,
+                     TekstRecenzije = "Preskupo"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 10,
+                     IdArtikla = 13,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odlična kamera, kao i performanse i baterija, prezadovoljan"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 11,
+                     IdArtikla = 19,
+                     OverallRating = 5,
+                     TekstRecenzije = "Vrhunske perfomanse pri pristupačnoj cijeni, sve preporuke"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 12,
+                     IdArtikla = 24,
+                     OverallRating = 4,
+                     TekstRecenzije = "Odličan gejming računar"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 13,
+                     IdArtikla = 30,
+                     OverallRating = 3,
+                     TekstRecenzije = "Nije loš miš, ali dizajn ima mane"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 14,
+                     IdArtikla = 21,
+                     OverallRating = 4,
+                     TekstRecenzije = "Prilično dobar desktop replacement"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 15,
+                     IdArtikla = 29,
+                     OverallRating = 3,
+                     TekstRecenzije = "Solidne slušalice ali kvaliteta zvuka pri jačoj glasnoći je loša"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 16,
+                     IdArtikla = 31,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odlična brzina ove kartica omogućava da brzo prebacujem veće fajlove i video sadržaje"
                  }
                 );
             modelBuilder.Entity<Tip>().HasData
