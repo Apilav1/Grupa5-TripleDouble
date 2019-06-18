@@ -314,6 +314,27 @@ namespace BestDeal.AdapteriPodataka
                      IdArtikla = 33,
                      OverallRating = 5,
                      TekstRecenzije = "Top miš sa velikim brojem programabilnih tipki koji olakšavaju stvari"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 44,
+                     IdArtikla = 2,
+                     OverallRating = 5,
+                     TekstRecenzije = "S obzirom na cijenu vrlo solidan laptop"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 45,
+                     IdArtikla = 2,
+                     OverallRating = 4,
+                     TekstRecenzije = "Cijena odlična ali komponente su mogle biti novije"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 46,
+                     IdArtikla = 2,
+                     OverallRating = 3,
+                     TekstRecenzije = "Tipičan laptop za prosječnog korisnika, nije loš"
                  }
                 );
             modelBuilder.Entity<Tip>().HasData
