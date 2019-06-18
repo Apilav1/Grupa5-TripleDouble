@@ -88,6 +88,7 @@ namespace BestDeal
             services.AddTransient<ITipovi, TipKreator>();
             services.AddTransient<INarudzba, NarudzbaKreator>();
             services.AddTransient<IRecenzije, RecenzijaKreator>();
+            services.AddTransient<IKorpa, KorpaKreator>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => Korpa.DajKorpu(sp));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

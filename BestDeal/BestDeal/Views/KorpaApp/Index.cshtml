@@ -40,7 +40,7 @@
 
     <div class="text-right">
         <div class="btn-group ">
-            <a class="btn btn-success" asp-controller="NarudzbaApp" asp-action="Placanje">Plaćanje</a>
+            <a class="btn btn-success" asp-controller="NarudzbaApp" asp-action="Placanje" asp-route-korpa="@Model.korpa.IdKorpe">Plaćanje</a>
             <a class="btn-group">
                 <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Dodaj još artikala u korpu<span class="caret"></span>
