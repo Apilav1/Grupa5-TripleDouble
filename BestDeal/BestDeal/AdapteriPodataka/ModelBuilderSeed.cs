@@ -125,6 +125,195 @@ namespace BestDeal.AdapteriPodataka
                      IdArtikla = 31,
                      OverallRating = 5,
                      TekstRecenzije = "Odlična brzina ove kartica omogućava da brzo prebacujem veće fajlove i video sadržaje"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 17,
+                     IdArtikla = 4,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odlična baterija koja izdrži čitav dan, kao i performanse"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 18,
+                     IdArtikla = 7,
+                     OverallRating = 4,
+                     TekstRecenzije = "i5 procesor je sasvim dovoljan za svakodnevne stvari, samo je mana sto pri ovoj cijeni nije uključen backlit tastatura"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 19,
+                     IdArtikla = 8,
+                     OverallRating = 3,
+                     TekstRecenzije = "Nije loše, performanse su vrhunske ali je mana trajanje baterije te je malo potežak"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 20,
+                     IdArtikla = 9,
+                     OverallRating = 5,
+                     TekstRecenzije = "Sve pohvale za ovu mašinu, najjača zamjena za desktop"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 21,
+                     IdArtikla = 10,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odličan ekran sa baterijom koja traje cijeli dan"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 22,
+                     IdArtikla = 11,
+                     OverallRating = 3,
+                     TekstRecenzije = "Boja ovog telefona je užasna, a baterija i nije nešto"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 23,
+                     IdArtikla = 12,
+                     OverallRating = 5,
+                     TekstRecenzije = "Vrhunska kamera, baterija odlična al nam sad preostaje da vidimo kako će se nadogradnje softvera odvijati pošto je Huawei na probnoj listi za ban xD"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 24,
+                     IdArtikla = 14,
+                     OverallRating = 4,
+                     TekstRecenzije = "Jedina mana je što je preskup"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 25,
+                     IdArtikla = 15,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odlična brzina ove kartica omogućava da brzo prebacujem veće fajlove i video sadržaje"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 26,
+                     IdArtikla = 16,
+                     OverallRating = 1,
+                     TekstRecenzije = "Ne preporučujem ovaj telefon"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 27,
+                     IdArtikla = 17,
+                     OverallRating = 4,
+                     TekstRecenzije = "Još je rano da se upoznamo sa 5g mrežom al sve u svemu nije loš"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 28,
+                     IdArtikla = 18,
+                     OverallRating = 3,
+                     TekstRecenzije = "Osrednja kvaliteta pri pristupačnoj cijeni"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 29,
+                     IdArtikla = 19,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odličan telefon"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 30,
+                     IdArtikla = 20,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odličan telefon"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 31,
+                     IdArtikla = 21,
+                     OverallRating = 5,
+                     TekstRecenzije = "Nemam zamjerku"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 32,
+                     IdArtikla = 22,
+                     OverallRating = 3,
+                     TekstRecenzije = "S obzirom kolika mu je cijena nemam šta puno komentarisat"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 33,
+                     IdArtikla = 23,
+                     OverallRating = 5,
+                     TekstRecenzije = "Zadovoljan sam ovim računarom"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 34,
+                     IdArtikla = 24,
+                     OverallRating = 4,
+                     TekstRecenzije = "Što se tiče igrica nemam nikakvih zamjerki, sve radi na max opcijama"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 35,
+                     IdArtikla = 25,
+                     OverallRating = 5,
+                     TekstRecenzije = "Nova generacija RTX kartice omogućava da igrice rade čak i na rezoluciji od 4K, što je fenomenalno"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 36,
+                     IdArtikla = 26,
+                     OverallRating = 5,
+                     TekstRecenzije = "Kompaktan ali i jak račuanr"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 37,
+                     IdArtikla = 27,
+                     OverallRating = 4,
+                     TekstRecenzije = "Odlična tastatura, jedino bi baterija mogla biti malo jača"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 38,
+                     IdArtikla = 28,
+                     OverallRating = 2,
+                     TekstRecenzije = "Nisam zadovoljan ovim slušalicama"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 39,
+                     IdArtikla = 29,
+                     OverallRating = 5,
+                     TekstRecenzije = "Odlične slušalice"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 40,
+                     IdArtikla = 30,
+                     OverallRating = 1,
+                     TekstRecenzije = "Bolje pogledajte neki drugi miš, ovaj ne valja ništa"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 41,
+                     IdArtikla = 31,
+                     OverallRating = 4,
+                     TekstRecenzije = "Preporučujem svima ovu memorijsku karticu"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 42,
+                     IdArtikla = 32,
+                     OverallRating = 5,
+                     TekstRecenzije = "Vrlo lahko se koristi što je po meni i najbitnije"
+                 },
+                 new Recenzija
+                 {
+                     IdRecenzije = 43,
+                     IdArtikla = 33,
+                     OverallRating = 5,
+                     TekstRecenzije = "Top miš sa velikim brojem programabilnih tipki koji olakšavaju stvari"
                  }
                 );
             modelBuilder.Entity<Tip>().HasData
@@ -220,7 +409,7 @@ namespace BestDeal.AdapteriPodataka
                         NazivArtikla = "ASUS UX580GD-BO009R",
                         CijenaArtikla = 3000.0,
                         IdArtikla = 8,
-                        KratkiOpis = "Laptop koji će učiniti svaki zadatak da se sa lahkoćom riješi!",
+                        KratkiOpis = "Laptop koji je namjenjen za one koje traže zamjenu za desktop računar!",
                         DetaljniOpis = "Procesor: Intel Core i7 8750H 2.2 GHz (6 Cores) \n Memorija (RAM): 16 GB DDR4 \n Hard disk: 512 GB, SSD \n Grafička: Nvidia GeForce GTX 1050 \n Mreža: Wireless, LAN \n Ostalo: Card Reader, HDMI, USB3.1 , VGA ,Fingerprint",
                         URLMaleSlike1 = "https://www.comtradeshop.com/img/products/2018-08-31/asus-zenbook-pro-ux580gd-bo009r-laptop-15-6-quot-full-hd-ips-intel-hexa-core-i7-8750h-16gb-512gb-ssd-nvme-geforce-gtx1050-4gb-gddr5-win10-pro_IGYtV_3.jpg",
                         URLSlike1 = "https://www.comtradeshop.com/img/products/2018-08-31/asus-zenbook-pro-ux580gd-bo009r-laptop-15-6-quot-full-hd-ips-intel-hexa-core-i7-8750h-16gb-512gb-ssd-nvme-geforce-gtx1050-4gb-gddr5-win10-pro_IGYtV_3.jpg",
