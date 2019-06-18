@@ -4,14 +4,16 @@ using BestDeal.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    partial class BestDealContextModelSnapshot : ModelSnapshot
+    [Migration("20190618121551_josRecenzija")]
+    partial class josRecenzija
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +61,7 @@ namespace BestDeal.Migrations
                             KratkiOpis = "Vrhunski laptop za prosječnog korisnika!",
                             NazivArtikla = "HP 250 G6",
                             TipArtiklaidTipa = 1,
-                            URLMaleSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
+                            URLMaleSlike1 = "https://static.toiimg.com/photo/60104728/HP-15-BS542TU-2EY84PA-Laptop-Core-i3-6th-Gen4-GB1-TBDOS.jpg",
                             URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
                             tipNaziv = "Laptopi"
                         },
@@ -868,9 +870,9 @@ okia-9-pureview-.jpg"
                             BatteryLifeRating = 0.0,
                             DesignRating = 0.0,
                             IdArtikla = 15,
-                            OverallRating = 3.0,
+                            OverallRating = 5.0,
                             PerformanceRating = 0.0,
-                            TekstRecenzije = "Ne znam šta da kažem i valja i ne valja"
+                            TekstRecenzije = "Odlična brzina ove kartica omogućava da brzo prebacujem veće fajlove i video sadržaje"
                         },
                         new
                         {

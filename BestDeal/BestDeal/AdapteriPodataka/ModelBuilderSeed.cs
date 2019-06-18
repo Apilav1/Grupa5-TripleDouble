@@ -353,7 +353,7 @@ namespace BestDeal.AdapteriPodataka
                       IdArtikla = 1,
                       KratkiOpis = "Vrhunski laptop za prosječnog korisnika!",
                       DetaljniOpis = "Povežite se sa cijenjenim HP 250 notebook računarima. Završajite poslovne zadatke sa Intel® tehnologijom, osnovnim alatima za saradnju koji su učitani na HP 250. Izdržljiva šasija pomaže zaštiti laptopa od strogosti dana.",
-                      URLMaleSlike1 = "https://static.toiimg.com/photo/60104728/HP-15-BS542TU-2EY84PA-Laptop-Core-i3-6th-Gen4-GB1-TBDOS.jpg",
+                      URLMaleSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
                       URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
                       TipArtiklaidTipa = ParoviTip["Laptopi"].idTipa,
                       tipNaziv = "Laptopi"

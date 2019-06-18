@@ -4,14 +4,16 @@ using BestDeal.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BestDeal.Migrations
 {
     [DbContext(typeof(BestDealContext))]
-    partial class BestDealContextModelSnapshot : ModelSnapshot
+    [Migration("20190618132258_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +61,7 @@ namespace BestDeal.Migrations
                             KratkiOpis = "Vrhunski laptop za prosječnog korisnika!",
                             NazivArtikla = "HP 250 G6",
                             TipArtiklaidTipa = 1,
-                            URLMaleSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
+                            URLMaleSlike1 = "~/lib/slike/1.jpg",
                             URLSlike1 = "https://images-na.ssl-images-amazon.com/images/I/81iq991JMEL._SL1500_.jpg",
                             tipNaziv = "Laptopi"
                         },
