@@ -21,7 +21,7 @@ namespace BestDeal.Controllers
 
         public ViewResult List(string artikal)
         {
-            string _artikal = artikal;
+            int _artikal = Convert.ToInt32(artikal);
             IEnumerable<Recenzija> recenzijeR;
             Artikal sadasnjiArtikal;
             //WriteErrorLog(tip);
@@ -33,8 +33,8 @@ namespace BestDeal.Controllers
             }
             else
             {
-                recenzijeR = _recenzijeApp.recenzijeApp.Where(p => p.IdArtikla.Equals(artikal)).OrderBy(p => p.IdRecenzije);
-                sadasnjiArtikal = _artikliApp.artikliApp.Where(a => a.IdArtikla.Equals(artikal)).FirstOrDefault();
+                recenzijeR = _recenzijeApp.recenzijeApp;
+                sadasnjiArtikal = _artikliApp.artikliApp.Where(a => a.IdArtikla.Equals(_artikal)).FirstOrDefault();
             }
             return View(new RecenzijaViewModel
             {

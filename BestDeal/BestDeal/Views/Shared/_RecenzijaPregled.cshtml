@@ -1,0 +1,30 @@
+﻿@model Recenzija
+<hr />
+<div class="review-block">
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div class="review-block-name"><a href="#">Korisnik</a></div>
+            <div class="review-block-date">@DateTime.Now.ToShortDateString()<br />Danas</div>
+        </div>
+        <div class="col-sm-9">
+            <div class="review-block-rate">
+                @{
+                    int rating = Convert.ToInt32(Math.Round(Model.OverallRating));
+                    for (int i = 0; i < rating; i++)
+                    {
+                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                    }
+                    for (int i = 0; i < 5 - rating; i++)
+                    {
+                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                    }
+                }
+            </div>
+            <div class="review-block-description">@Model.TekstRecenzije</div>
+        </div>
+    </div>

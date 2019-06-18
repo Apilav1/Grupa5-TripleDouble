@@ -1,6 +1,8 @@
 ﻿@using BestDeal.ViewModels
 @model RecenzijaViewModel
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -44,28 +46,69 @@
 
 
     <div class="container">
-
+        @{
+            int[] brojac = new int[5];
+            double[] udioOcjena = new double[5];
+            List<double> sumaOcjena = new List<double>();
+            double prosjekOcjena = 0.0;
+            //sabiranje svih recenzija i prikaz ocjene
+            foreach (Recenzija r in Model.recenzije)
+            {
+                if (r.IdArtikla == Model.trenutniArtikal.IdArtikla)
+                {
+                    brojac[(int)r.OverallRating - 1]++;
+                    sumaOcjena.Add(r.OverallRating);
+                }
+            }
+            double pojedinacnaSuma = 0;
+            //zbir svih ocjena za artikal
+            foreach (double d in sumaOcjena)
+            {
+                pojedinacnaSuma += d;
+            }
+            //udio pojedinacnih ocjena u ukupnom skoru
+            for (int i = 0; i < 5; i++)
+            {
+                if (sumaOcjena.Count != 0)
+                {
+                    udioOcjena[i] = 100 * brojac[i] / sumaOcjena.Count;
+                }
+                else
+                {
+                    udioOcjena[i] = 0;
+                }
+            }
+            if (sumaOcjena.Count != 0)
+            {
+                prosjekOcjena = pojedinacnaSuma / sumaOcjena.Count;
+            }
+            else
+            {
+                prosjekOcjena = 0;
+            }
+        }
         <div class="row">
             <div class="col-sm-3">
                 <div class="rating-block">
-                    <h4>Average user rating</h4>
-                    <!--    Model.trenutniArtikal.OcjenaArtikla -->
-                    <h2 class="bold padding-bottom-7"><small>0 / 5</small></h2>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
+                    <h4>Prosječna ocjena</h4>
+                    <!--    Treba ispisati tacno onoliko popunjenih zvjezdica koliki je rating -->
+                    <h2 class="bold padding-bottom-7"><small>@prosjekOcjena / 5</small></h2>
+                    @{
+                        int zaokruzenProsjek = Convert.ToInt32(Math.Round(prosjekOcjena));
+                        for (int i = 0; i < zaokruzenProsjek; i++)
+                        {
+                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            </button>
+                        }
+                        for (int i = 0; i < 5 - zaokruzenProsjek; i++)
+                        {
+                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            </button>
+                        }
+                    }
+
                 </div>
             </div>
             <div class="col-sm-3">
@@ -76,173 +119,87 @@
                     </div>
                     <div class="pull-left" style="width:180px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            @{ 
-                                int brojac1 = 0, brojac2 = 0, brojac3 = 0, brojac4 = 0, brojac5 = 0;
-                                foreach (Recenzija r in Model.recenzije)
-                                {
-                                    if (r.OverallRating == 5)
-                                    {
-                                        brojac5++;
-                                    }
-                                }
-                            }
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=@brojac5 -valuemin="0" aria-valuemax="5" style="width: 1000%">
+
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@Html.Raw(udioOcjena[4])" -valuemin="0" aria-valuemax="5" style="width: @Html.Raw(Math.Round(udioOcjena[4]))%">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right" style="margin-left:10px;">1</div>
+                    <div class="pull-right" style="margin-left:10px;">@brojac[4]</div>
                 </div>
+
+
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
                     </div>
                     <div class="pull-left" style="width:180px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@Html.Raw(udioOcjena[3])" -valuemin="0" aria-valuemax="5" style="width: @Html.Raw(Math.Round(udioOcjena[3]))%">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right" style="margin-left:10px;">1</div>
+                    <div class="pull-right" style="margin-left:10px;">@brojac[3]</div>
                 </div>
+
+
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
                     </div>
                     <div class="pull-left" style="width:180px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@Html.Raw(udioOcjena[2])" -valuemin="0" aria-valuemax="5" style="width: @Html.Raw(Math.Round(udioOcjena[2]))%">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
+                    <div class="pull-right" style="margin-left:10px;">@brojac[2]</div>
                 </div>
+
+
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
                     </div>
                     <div class="pull-left" style="width:180px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@Html.Raw(udioOcjena[1])" -valuemin="0" aria-valuemax="5" style="width: @Html.Raw(Math.Round(udioOcjena[1]))%">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
+                    <div class="pull-right" style="margin-left:10px;">@brojac[1]</div>
                 </div>
+
+
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
                     </div>
                     <div class="pull-left" style="width:180px;">
                         <div class="progress" style="height:9px; margin:8px 0;">
-                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@Html.Raw(udioOcjena[0])" -valuemin="0" aria-valuemax="5" style="width: @Html.Raw(Math.Round(udioOcjena[0]))%">
                                 <span class="sr-only">80% Complete (danger)</span>
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
+                    <div class="pull-right" style="margin-left:10px;">@brojac[0]</div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-sm-7">
-                <hr />
-                <div class="review-block">
-                    <div class="row">
-                        <div class="col-sm-3">
-
-                            <div class="review-block-name"><a href="#">nktailor</a></div>
-                            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="review-block-rate">
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="review-block-title">this was nice in buy</div>
-                            <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-3">
-
-                            <div class="review-block-name"><a href="#">nktailor</a></div>
-                            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="review-block-rate">
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="review-block-title">this was nice in buy</div>
-                            <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-3">
-
-                            <div class="review-block-name"><a href="#">nktailor</a></div>
-                            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="review-block-rate">
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <div class="review-block-title">this was nice in buy</div>
-                            <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> <!-- /container -->
+        @{
+            foreach (Recenzija r in Model.recenzije)
+            {
+                if (r.IdArtikla == Model.trenutniArtikal.IdArtikla)
+                {
+                    @await Html.PartialAsync("_RecenzijaPregled", r)
+                }
+            }
+        }
+    </div>
+    <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
