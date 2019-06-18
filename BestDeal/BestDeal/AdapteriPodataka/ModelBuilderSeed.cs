@@ -186,8 +186,8 @@ namespace BestDeal.AdapteriPodataka
                  {
                      IdRecenzije = 25,
                      IdArtikla = 15,
-                     OverallRating = 5,
-                     TekstRecenzije = "Odlična brzina ove kartica omogućava da brzo prebacujem veće fajlove i video sadržaje"
+                     OverallRating = 3,
+                     TekstRecenzije = "Ne znam šta da kažem i valja i ne valja"
                  },
                  new Recenzija
                  {
