@@ -58,9 +58,8 @@ namespace BestDeal.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var transaction = _context.Database.BeginTransaction())
+                    using (var transaction = _context.Database.BeginTransaction())
                 {
-              
                     _context.Add(artikal);
                     _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT dbo.Artikal ON");
                     _context.SaveChanges();
@@ -107,7 +106,7 @@ namespace BestDeal.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CijenaArtikla,IdArtikla,NazivArtikla,KratkiOpis,DetaljniOpis,URLSlike1,URLMaleSlike1")] Artikal artikal)
+        public async Task<IActionResult> Edit(int id, [Bind("CijenaArtikla,IdArtikla,NazivArtikla,KratkiOpis,DetaljniOpis,URLSlike1,URLMaleSlike1, tipNaziv")] Artikal artikal)
         {
             if (id != artikal.IdArtikla)
             {
@@ -118,7 +117,7 @@ namespace BestDeal.Controllers
             {
                 try
                 {
-                    _context.Update(artikal);
+                    _context.Artikal.Update(artikal);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -142,14 +141,14 @@ namespace BestDeal.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Views/PogresnaCesta.cshtml");
             }
 
             var artikal = await _context.Artikal
                 .FirstOrDefaultAsync(m => m.IdArtikla == id);
             if (artikal == null)
             {
-                return NotFound();
+                return View("Views/PogresnaCesta.cshtml");
             }
 
             return View(artikal);

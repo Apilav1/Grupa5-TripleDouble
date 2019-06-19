@@ -32,7 +32,7 @@ namespace BestDeal.Models
 
         public Artikal()
         {
-            id++;
+           id++;
              Debug.WriteLine("dodijelio id {0}", Program.lastArtikalId);
              idArtikla = Program.lastArtikalId;
              Program.lastArtikalId++;

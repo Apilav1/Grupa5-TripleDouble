@@ -1,0 +1,57 @@
+﻿@model StatistikaViewModel
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container-fluid">
+    <div class="col col-md-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            Generalno
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">@Model.artikli.Count()</span> artikala</li>
+                        <li class="list-group-item"><span class="badge">@Model.recenzije.Count()</span> recenzija</li>
+                        <li class="list-group-item"><span class="badge">@Model.korpe.Count()</span> korpi</li>
+                        <li class="list-group-item"><span class="badge">@Model.artikli.Where(a => a.CijenaArtikla > 1000).Count() </span> artikala preko 1000 KM</li>
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="col col-md-9">
+        <div class="row">
+            <div class="col col-md-5">
+                <h4>Statistike korisnika:</h4>
+                Udio običnih korisnika<span class="pull-right strong"></span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="@(100*(Model.brojKorisnika - Model.brojAdmina) / Model.brojKorisnika)" aria-valuemin="0" aria-valuemax="100" style="width:@(100*(Model.brojKorisnika - Model.brojAdmina) / Model.brojKorisnika)%">@(100 * (Model.brojKorisnika - Model.brojAdmina) / Model.brojKorisnika)%</div>
+                </div>
+
+                Udio admina<span class="pull-right strong"></span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@(100*Model.brojAdmina/Model.brojKorisnika)" aria-valuemin="0" aria-valuemax="100" style="width:@(100*Model.brojAdmina/Model.brojKorisnika)%">@(100*Model.brojAdmina / Model.brojKorisnika)%</div>
+                </div>
+            </div>
+            <div class="col col-md-5">
+                <h4>Statistike recenzija:</h4>
+                Recenzije sa ocjenom preko 3<span class="pull-right strong"></span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@(100*Model.recenzije.Where(r=> r.OverallRating >3).Count()/Model.recenzije.Count())" aria-valuemin="0" aria-valuemax="100" style="width:@(100*Model.recenzije.Where(r=> r.OverallRating >3).Count()/Model.recenzije.Count())%">@(100*Model.recenzije.Where(r => r.OverallRating > 3).Count() / Model.recenzije.Count())%</div>
+                </div>
+
+                Recenzije duže od 100 karaktera<span class="pull-right strong"></span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@(100*Model.recenzije.Where(r=> r.TekstRecenzije.Length > 100).Count()/Model.recenzije.Count())" aria-valuemin="0" aria-valuemax="100" style="width:@(100*Model.recenzije.Where(r=> r.TekstRecenzije.Length > 100).Count()/Model.recenzije.Count())%">@(100*Model.recenzije.Where(r => r.TekstRecenzije.Length > 100).Count() / Model.recenzije.Count())%</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
