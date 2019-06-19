@@ -32,18 +32,18 @@ namespace BestDeal.Models
 
         public Artikal()
         {
-            /* id++;
+            id++;
              Debug.WriteLine("dodijelio id {0}", Program.lastArtikalId);
              idArtikla = Program.lastArtikalId;
-             Program.lastArtikalId++;*/
+             Program.lastArtikalId++;
         }
 
         public Artikal(double cijenaArtikla, int idArtikla)
         {
             CijenaArtikla = cijenaArtikla;
             this.idArtikla = idArtikla;
-          /* idArtikla = Program.lastArtikalId;
-            Program.lastArtikalId++;*/
+           idArtikla = Program.lastArtikalId;
+            Program.lastArtikalId++;
         }
         String tippp;
         [System.ComponentModel.DisplayName("Naziv tipa artikla")]
@@ -56,11 +56,11 @@ namespace BestDeal.Models
             {
             
                 tippp = value;
-              /*  Tip tip = new Tip();
+               Tip tip = new Tip();
                 tip.Ime = value;
                 Program.lastTipId++;
                 tip.idTipa = Program.lastTipId;
-                TipArtikla = tip;*/
+                TipArtikla = tip;
             }
             }
         //TODO: Ovdje bi mozda bio koristan flyweight large-scale jer slike mogu biti velike u slucaju nekoliko hiljada artikala

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace BestDeal.AdapteriPodataka
 {
@@ -498,7 +499,7 @@ namespace BestDeal.AdapteriPodataka
                         IdArtikla = 14,
                         KratkiOpis = "Upoznaj tehnologiju koja ispunjava vaše poslovne potrebe!",
                         DetaljniOpis = "Rezolucija: 5.99 inches 1440 x 2880 pixels, 18:9 ratio (~538 ppi density) \n OS: Android 9.0 (Pie); Android One \n Procesor: Qualcomm SDM845 Snapdragon 845 (10 nm) \n GPU: Adreno 630 \n Card slot: No \n Internal: 128 GB, 6 GB RAM \n Glavna kamera: Five sensors(5x 12MP f/1.8) \n Prednja kamera: 20 MP \n Baterija: 3320mAh",
-                        URLMaleSlike1 = "https://cdn2.gsmarena.com/vv/bigpic\nokia-9-pureview-.jpg",
+                        URLMaleSlike1 = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6325/6325704cv11d.jpg",
                         URLSlike1 = "https://cdn2.gsmarena.com/vv/bigpic\nokia-9-pureview-.jpg",
                         TipArtiklaidTipa = paroviTip["Mobiteli"].idTipa
                     },

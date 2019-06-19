@@ -18,6 +18,9 @@ using Microsoft.Extensions.Options;
 using BestDeal.AdapteriPodataka;
 using BestDeal.Interfaces;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Stripe;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace BestDeal
 {
@@ -60,6 +63,11 @@ namespace BestDeal
                     System.Diagnostics.Debug.WriteLine("Dosao sam do 5");
                 }
             }
+            else {
+                var user = UserManager.FindByNameAsync(email);
+                UserManager.AddToRoleAsync(user.Result, "Admin");
+                System.Diagnostics.Debug.WriteLine("Dosao sam do 5");
+            }
         }
         public Startup(IConfiguration configuration)
         {
@@ -71,6 +79,7 @@ namespace BestDeal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+          
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -80,7 +89,7 @@ namespace BestDeal
 
             services.AddDbContext<BestDealContext>(options =>
        options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>() //prostor za custom usera
+            services.AddIdentity<IdentityUser, IdentityRole>().AddRoles<IdentityRole>() //prostor za custom usera
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<BestDealContext>()
                 .AddDefaultTokenProviders();
@@ -99,6 +108,8 @@ namespace BestDeal
                 googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
                 googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
             });
+            services.AddAuthorization(options =>
+           options.AddPolicy("SamoAdmin", policy => policy.RequireUserName("admin@bestdeal.ba").RequireAuthenticatedUser()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -132,7 +143,8 @@ namespace BestDeal
                     template: "ArtikliApp/{action}/{category?}",
                     defaults: new { Controller = "ArtikliApp", action = "List" });
             });
-            // CreateRoles(serviceProvider);
+            StripeConfiguration.SetApiKey("sk_test_3t4TscM8Hml7Gn2lsabvrvq600yAPRRrdf");
+            //CreateRoles(serviceProvider);
         }
 
     }

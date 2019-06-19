@@ -28,8 +28,9 @@ namespace BestDeal.Controllers
             if (string.IsNullOrEmpty(artikal))
             {
                 //nema te opcije
-                sadasnjiArtikal= _artikliApp.artikliApp.FirstOrDefault();
-                recenzijeR = _recenzijeApp.recenzijeApp;
+                /*sadasnjiArtikal= _artikliApp.artikliApp.FirstOrDefault();
+                recenzijeR = _recenzijeApp.recenzijeApp;*/
+                return View("Views/PogresnaCesta.cshtml");
             }
             else
             {

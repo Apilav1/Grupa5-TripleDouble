@@ -1,4 +1,6 @@
 ﻿@using System.Globalization
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 @model Artikal
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
@@ -12,11 +14,11 @@
         </div>
         <div>
             <!-- Ovdje koristimo dobar fol Razor sintakse za spajanje HTML i C# stringova tako da svaki artikal ima zaseban event za prikazivanje detaljnijeg opisa. Bez ovoga bi se klikom na dugme otvarali detaljni opisi SVIH artikala -->
-            <a class="btn btn-primary" data-toggle="collapse" href="#@("sakrijOpis"+ Model.IdArtikla)" role="button" aria-expanded="false"
+            <a class="btn btn-primary" data-toggle="collapse" href="#@("sakrijOpis" + Model.IdArtikla)" role="button" aria-expanded="false"
                aria-controls="multiCollapseExample1">Prikaži detaljni opis</a>
         </div>
         <div class="col text-left">
-            <div class="collapse multi-collapse" id="@("sakrijOpis"+ Model.IdArtikla)">
+            <div class="collapse multi-collapse" id="@("sakrijOpis" + Model.IdArtikla)">
                 <div class="card card-body">
                     <style>
                         .line-breaks {
@@ -28,9 +30,20 @@
                 </div>
             </div>
         </div>
+        @{
+            var rezultat = await AuthorizationService.AuthorizeAsync(User, "SamoAdmin");
+            if (rezultat.Succeeded)
+            {
+                <div class="addToCart text-left">
+                    <p class="button ">
+                        <a class="btn btn-info" id="urediButton" asp-controller="Artikli" asp-action="Edit" asp-route-id=@Model.IdArtikla>Uredi artikal</a>
+                    </p>
+                </div>
+            }
+        }
         <div class="addToCart text-left">
             <p class="button ">
-                <a class="btn btn-success" id="recenzijaButton"
+                <a class="btn btn-info" id="recenzijaButton"
                    asp-controller="RecenzijaApp"
                    asp-action="List"
                    asp-route-artikal="@Model.IdArtikla">
@@ -49,4 +62,4 @@
             </p>
         </div>
     </div>
-    </div>
+</div>

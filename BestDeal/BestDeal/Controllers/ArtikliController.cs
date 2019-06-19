@@ -68,7 +68,7 @@ namespace BestDeal.Controllers
 
                     transaction.Commit();
                 }
-                //await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             else
